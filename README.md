@@ -25,8 +25,20 @@ avaliar as funcionalidades desenvolvidas.
 
 ### Desenvolvimento, apresentação e avaliação do trabalho:
 
-* O trabalho de ser realizado, preferencialmente, em duplas. Opcionalmente pode ser
-desenvolvido individualmente.
+* O trabalho de ser realizado, preferencialmente, em duplas. Opcionalmente pode ser desenvolvido individualmente.
 
-* Para a apresentação o grupo deve trazer uma versão “zipada” com todos os fontes
-necessários à execução do projeto e entregar ao final da apresentação para o instrutor.
+* Para a apresentação o grupo deve trazer uma versão “zipada” com todos os fontes necessários à execução do projeto e entregar ao final da apresentação para o instrutor.
+
+* A apresentação será realizada para a turma utilizando o projetor da sala de aula. Serão avaliados, além das funcionalidades solicitadas, a postura e domínio da aplicação desenvolvida. O tempo de apresentação será em torno de 10 minutos, seguido de
+questionamentos.
+
+* A apresentação do trabalho é de inteira responsabilidade dos alunos, o código deve executar na configuração e recursos disponíveis no laboratório onde foram realizadas as aulas ou em máquina própria. É tarefa do grupo garantir que o sistema esteja apto a ser
+executado no dia da apresentação.
+
+* Para a apresentação do projeto o banco de dados deve ter sido previamente populado pelo grupo de forma a permitir avaliar o trabalho desenvolvido.
+
+* Os trabalhos serão avaliados de acordo com as tecnologias estudadas, considerando o que é pedido no enunciado e o que foi realizado com sucesso pelo grupo. Outras funcionalidades serão valorizadas na nota final.
+
+* Sistemas que não consigam ser executados ou apresentados no dia da apresentação não serão avaliados.
+
+* Trabalhos considerados cópias configuram fraude e não serão avaliados.
