@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/pedrofontoura/s2b2017-2/issues"
   },
-  "homepage": "https://github.com/pedrofontoura/s2b2017-2#readme"
+  "homepage": "https://github.com/pedrofontoura/s2b2017-2#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.1",
+    "mongod": "^2.0.0",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.11.14"
+  }
 }
