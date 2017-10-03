@@ -4,6 +4,7 @@ var express = require('express');
 var app = express(); // Creates a reference variable to the express package;
 var morgan = require('morgan');
 var bodyParser = require('body-parser')
+var path = require('path')
 
 // Creates the references for the application modules;
 var routes = require('./api/routes/index');
@@ -22,6 +23,10 @@ const dbUrl = 'mongodb://localhost:27017/usersDb'; // Defines the url we're usin
 //Server port setup;
 app.listen(port, function() {
   console.log('running the server on port ' + port);
+});
+
+app.get('*', function(req, res){
+  res.sendFile(path.join(__dirname + '/public/index.html'))
 });
 
 //Database setup

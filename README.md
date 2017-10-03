@@ -45,4 +45,4 @@ executado no dia da apresentação.
 
 ### Built With
 * [Express API Documentation](http://expressjs.com/pt-br/api.html)
-* [Mongoose API DOcumentation](http://mongoosejs.com/docs/api.html)
+* [Mongoose API Documentation](http://mongoosejs.com/docs/api.html)
