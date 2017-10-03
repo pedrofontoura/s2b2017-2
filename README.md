@@ -42,3 +42,7 @@ executado no dia da apresentação.
 * Sistemas que não consigam ser executados ou apresentados no dia da apresentação não serão avaliados.
 
 * Trabalhos considerados cópias configuram fraude e não serão avaliados.
+
+### Built With
+* [Express API Documentation](http://expressjs.com/pt-br/api.html)
+* [Mongoose API DOcumentation](http://mongoosejs.com/docs/api.html)
