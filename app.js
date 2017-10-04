@@ -15,6 +15,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/api', routes);
+app.use(express.static(__dirname + '/public'))
 
 // App config
 const port = process.env.PORT || 8080; // Defines the port we're using to access the application;
