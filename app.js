@@ -25,9 +25,9 @@ const dbUrl = 'mongodb://localhost:27017/usersDb'; // Defines the url we're usin
 //Database setup
 init.dbInit(dbUrl);
 
-app.get('*', function(req, res){
-  res.sendFile(path.join(__dirname + '/public/index.html'))
-})
+// app.get('*', function(req, res){
+//   res.sendFile(path.join(__dirname + '/public/index.html'))
+// })
 
 //Server port setup;
 app.listen(port, function() {
