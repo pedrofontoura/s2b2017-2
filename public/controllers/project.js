@@ -1,11 +1,22 @@
 var app = angular.module('s2bApp', []);
 
+
 app.controller('projectController', function($scope, $http){
-  $scope.formModel = {};
-  $scope.onSubmit = function() {
-    console.log('entrou aqui')
-    // Angular Documentation Link: https://docs.angularjs.org/api/ng/service/$http
-    // $http.post('/someUrl', data, config).then(successCallback, errorCallback);
-    $http.post('http://localhost:8080/api/project', $scope.project)
+  $scope.onSubmit = createPost;
+
+  function init(){
+    getAllProjects();
+  }
+  init();
+
+  function createPost() {
+    $http.post('http://localhost:8080/api/project', $scope.project).then(function(){
+      getAllProjects();
+    })
+  }
+  function getAllProjects(){
+    $http.get('http://localhost:8080/api/project').then(function(projects){
+      $scope.projects = projects.data;
+    })
   }
 });
