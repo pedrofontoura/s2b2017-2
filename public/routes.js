@@ -15,11 +15,13 @@ appRoutes.config(function($routeProvider,$locationProvider) {
   })
 
   .when('/register', {
-    templateUrl: 'views/pages/register.html'
+    templateUrl: 'views/pages/register.html',
+    controller: 'newUser'
   })
-
   .when('/projects', {
-    templateUrl: 'views/pages/projects.html'
+    templateUrl: 'views/pages/projects.html',
+    controller: 'getAllProjects'
+
   })
 
   .otherwise ({ redirectTo: '/' });
