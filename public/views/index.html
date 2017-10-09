@@ -36,6 +36,7 @@
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
             <div class="dropdown-menu" aria-labelledby="navDropdown">
+              <!-- <a class="dropdown-item" href="#">Log In</a> -->
               <a class="dropdown-item" href="/register">Register</a>
               <a class="dropdown-item" href="/projects">Projects</a>
             </div>
@@ -49,38 +50,6 @@
     </nav> <!-- Navigation Bar -->
     <!-- Container -->
     <div class="container lineBreak">
-      <!-- New Project Modal -->
-      <div  class="modal fade" id="newProjectModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalTitle">New Project</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <!-- Project Form -->
-              <form name="newProjectForm" ng-submit="onSubmit()" novalidate="novalidate" >
-                <!-- Title -->
-                <div class="form-group">
-                   <label for="projectTitleInput">Title</label>
-                  <input id="projectTitleInput" ng-model="project.title" type="text" class="form-control" placeholder="Project title" required="required">
-                </div>
-                <!-- Description -->
-                <div class="form-group">
-                  <label for="projectDescriptionInput">Description</label>
-                  <textarea id="projectDescriptionInput" ng-model="project.description" class="form-control" rows="5" placeholder="Write a brief description of the project...  " required="required"></textarea>
-                </div>
-              </form> <!-- End Project Form -->
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button ng-click="onSubmit()" type="submit" class="btn btn-primary"  data-dismiss="modal">Post</button>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- ng-view Content -->
       <div class="ng-view">
       </div>
@@ -101,6 +70,8 @@
     <!-- AppScript -->
     <script src="/app.js "></script>
     <script src="/routes.js "></script>
+    <script src="controllers/user.js "></script>
+    <script src="controllers/project.js "></script>
     <!-- <script src="controllers/project.js "></script> -->
   </body>
 </html>
