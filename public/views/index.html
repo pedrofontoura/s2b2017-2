@@ -34,11 +34,10 @@
             <a class="nav-link" href="/about">About</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <a class="nav-link dropdown-toggle" href="#" id="navDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Options</a>
             <div class="dropdown-menu" aria-labelledby="navDropdown">
-              <a class="dropdown-item" href="http://www.google.com">Action</a>
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="/register">Register</a>
+              <a class="dropdown-item" href="/projects">Projects</a>
             </div>
           </li>
         </ul>
@@ -81,27 +80,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <!-- New Project Modal Trigger -->
-      <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#newProjectModal">New Project</button>
-      <!-- Projects Table -->
-      <div class="table-responsive lineBreak">
-        <table class="table-sm table table-hover">
-          <thead class="thead-default">
-            <tr>
-              <th>#</th>
-              <th>Title</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="project in projects">
-              <td>{{ $index + 1 }}</td>
-              <td>{{ project.title }}</td>
-              <td>{{ project.description }}</td>
-            </tr>
-          </tbody>
-        </table>
       </div>
       <!-- ng-view Content -->
       <div class="ng-view">
