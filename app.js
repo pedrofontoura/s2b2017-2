@@ -1,6 +1,6 @@
-// Creates the references for the external modules;
+// Cria as referências para os 'modules' externos da aplicação;
 var express = require('express');
-var app = express(); // Creates a reference variable to the express package;
+var app = express();
 var morgan = require('morgan');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser')
@@ -8,7 +8,7 @@ var router = express.Router();
 var appRoutes = require('./server/routes/index')(router);
 var path = require('path');
 
-// Creates the references for the application modules;
+// Cria as referências para os 'modules' internos da aplicação;
 var init = require('./server/database/init');
 
 // Middlewares;
@@ -25,10 +25,15 @@ const dbUrl = 'mongodb://localhost:27017/usersDb'; // Defines the url we're usin
 // Database setup
 init.dbInit(dbUrl);
 
-// Indica a view index.html como padrão para conexão via localhost
+// Indica a view index.html como padrão para conexão via localhost;
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/public/views/index.html'))
-})
+});
+
+// Redireciona páginas
+app.get('*', function(req, res){
+  res.sendFile(path.join(__dirname + '/public/views/index.html'))
+});
 
 //Server port setup;
 app.listen(port, function() {
