@@ -1,1 +1,1 @@
-angular.module('s2bApp',['appRoutes', 'userControllers', 'projectControllers'])
+angular.module('s2bApp',['appRoutes', 'userControllers', 'projectControllers', 'commentControllers'])
