@@ -1,0 +1,167 @@
+<div ng-init="getProjectById()">
+  <div class="projectHeader">
+    <div class="container">
+      <h1 class="display-3">{{ project.title }}</h1>
+      <p class="profileInfo"> Created by <a href="#">AIESEC</a></p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="appDisplayCard boxShadow">
+          <div class="iconDisplayYellow">
+            <span class="iconDisplaySpan icon-group"></span>
+          </div>
+          <div class="textDisplay">
+            <h3 class="textDisplayTitleYellow">PLACES </h3>
+            <p>5/12</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="appDisplayCard boxShadow">
+          <div class="iconDisplayGreen">
+            <span class="iconDisplaySpan icon-globe"></span>
+          </div>
+          <div class="textDisplay">
+            <h3 class="textDisplayTitleGreen">REGION</h3>
+            <p>Latin America</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="appDisplayCard boxShadow">
+          <div class="iconDisplayRed">
+            <span class="iconDisplaySpan icon-book"></span>
+          </div>
+          <div class="textDisplay">
+            <h3 class="textDisplayTitleRed">WORK AREA</h3>
+            <p>Education</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="appDisplayCard boxShadow">
+          <div class="iconDisplayBlue">
+            <span class="iconDisplaySpan icon-calendar"></span>
+          </div>
+          <div class="textDisplay">
+            <h3 class="textDisplayTitlePurple">START DATE</h3>
+            <p>01/02/18</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="infoWrap boxShadow">
+          <h2 >Project Description</h2>
+          <div class="descriptionDisplay">
+            <p> {{ project.description }} <a href="#">Edit</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-5">
+        <section class="pageInfo">
+        <!-- Page Info Content -->
+          <div class="infoWrap boxShadow">
+            <h2 >Project Info</h2>
+            <div class="infoItem">
+              <i class="icon-calendar"></i>
+              <p>From 05/03/2018 to 07/05/18</p>
+              <a href="#">Edit</a>
+            </div>
+            <div class="infoItem">
+              <i class="icon-calendar"></i>
+              <p>Accepting aplications untill 05/02/18</p>
+              <a href="#">Edit</a>
+            </div>
+            <div class="infoItem">
+              <i class="icon-globe"></i>
+              <p clas="">Mexico | Ciudad del Mexico</p>
+              <a href="#">Edit</a>
+            </div>
+            <button type="button" class="lineBreak projectApplyBtn appBtn btn">Apply Now &raquo</button>
+          </div>
+        </section>
+        <section class="avatarDisplay">
+        <!-- Avatar Display Content -->
+        </section>
+      </div>
+      <div class="col-7">
+        <section class="pageComments">
+          <div class="infoWrap boxShadow">
+            <h2>Coments</h2>
+            <div class="comment comentForm">
+              <div class="commentAvatarWrap">
+                <img class="avatarImg" src="profile5.png" alt="?">
+              </div>
+              <div class="commentFormContent">
+                <form>
+                  <textarea  rows="3" placeholder="Type a comment..." type="text"></textarea>
+                  <button type="button" class="commentSendBtn appBtn btn">Send<i class="  icon-send"></i></button>
+                </form>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="commentAvatarWrap">
+                <img class="avatarImg" src="profile1.png" alt="?">
+              </div>
+              <div class="commentContent">
+                <p><a href="#">Thomaz Zandonotto </a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate, ante consectetur ornare efficitur, erat erat fringilla odio, a euismod lacus leo lobortis libero. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+                <p class="small commentDatetime">December 14, 2017 at 12:33pm</p>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="commentAvatarWrap">
+                <img class="avatarImg" src="profile4.png" alt="?">
+              </div>
+              <div class="commentContent">
+                <p><a href="#">John Doe </a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate, ante consectetur ornare efficitur, erat erat fringilla.</p>
+                <p class="small commentDatetime">December 10, 2017 at 4:24pm</p>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="commentAvatarWrap">
+                <img class="avatarImg" src="profile2.png" alt="?">
+              </div>
+              <div class="commentContent">
+                <p><a href="#">Mary Doe </a>Donec commodo, nisi quis dapibus imperdiet, justo ex mattis lacus, mollis interdum mi magna sed lorem. Suspendisse condimentum facilisis elit, quis eleifend erat ultrices a. Nunc a consequat purus. Sed auctor luctus finibus. Aenean quis odio sem. Nam ipsum ligula, efficitur eget ante nec, finibus facilisis metus. Aenean vitae elit tellus. Nulla facilisi. Vestibulum consectetur lectus eros, in feugiat enim rhoncus quis. Cras in mattis arcu.</p>
+                <p class="small commentDatetime">November 28, 2017 at 7:13am</p>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="commentAvatarWrap">
+                <img class="avatarImg" src="profile1.png" alt="?">
+              </div>
+              <div class="commentContent">
+                <p><a href="#">Thomaz Zandonotto </a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate, ante consectetur ornare efficitur, erat erat fringilla odio, a euismod lacus leo lobortis libero. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+                <p class="small commentDatetime">December 14, 2017 at 12:33pm</p>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="commentAvatarWrap">
+                <img class="avatarImg" src="profile4.png" alt="?">
+              </div>
+              <div class="commentContent">
+                <p><a href="#">John Doe </a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate, ante consectetur ornare efficitur, erat erat fringilla.</p>
+                <p class="small commentDatetime">December 10, 2017 at 4:24pm</p>
+              </div>
+            </div>
+            <div class="comment">
+              <div class="commentAvatarWrap">
+                <img class="avatarImg" src="profile2.png" alt="?">
+              </div>
+              <div class="commentContent">
+                <p><a href="#">Mary Doe </a>Donec commodo, nisi quis dapibus imperdiet, justo ex mattis lacus, mollis interdum mi magna sed lorem. Suspendisse condimentum facilisis elit, quis eleifend erat ultrices a. Nunc a consequat purus. Sed auctor luctus finibus. Aenean quis odio sem. Nam ipsum ligula, efficitur eget ante nec, finibus facilisis metus. Aenean vitae elit tellus. Nulla facilisi. Vestibulum consectetur lectus eros, in feugiat enim rhoncus quis. Cras in mattis arcu.</p>
+                <p class="small commentDatetime">November 28, 2017 at 7:13am</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
