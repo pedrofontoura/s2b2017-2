@@ -1,0 +1,438 @@
+html {
+  --black: #343a40;
+  --lightBlack: #56606a;
+  --blue: #2980b9;
+  --lightBlue: #70b8db;
+  --green: #1abc9c;
+  --lightGreen: #66cccc;
+  --yellow: #f1c40f;
+  --lightYellow: #f5d657;
+  --red: #e74c3c;
+  --lightRed: #ef8b80;
+}
+body {
+  overflow-y:scroll;
+}
+.row {
+  margin-top: 20px;
+}
+.btn  {
+  border-radius: 0;
+}
+.btn i {
+  margin-left: 10px;
+}
+.boxShadow {
+  box-shadow: 1px 1px 5px #CBCBC9;
+}
+.appBtn {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  font-size: 15px;
+  background-color: var(--black);
+  color: white;
+  cursor: pointer;
+}
+/*.someButton {
+  width:;
+  height:;
+  flex-grow:;
+  font-size:; //Optional
+  background-color:; //Optional
+  color:; //Optional
+}*/
+.commentSendBtn {
+  width:auto;
+  height:30px;
+  margin: 0;
+  flex-grow:0;
+  font-size: 15px;
+  background-color: var(--red);
+  color: white;
+  align-self: flex-end;
+}
+.commentSendBtn:active {
+  background-color: var(--lightRed);
+}
+.projectApplyBtn {
+  width:100%;
+  height:30px;
+  flex-grow:0;
+  font-size: 15px;
+  background-color: var(--blue);
+  color: white;
+  align-self: flex-end;
+}
+.projectApplyBtn:active {
+    background-color: var(--lightBlue);
+}
+.iconButton:hover {
+  cursor: pointer;
+}
+.iconButton:active {
+  background-color: var(--lightBlack) ;
+}
+.iconButton i {
+  margin-left: 10px;
+}
+.profileInfo {
+  margin-bottom: 5px;
+}
+div[class^="iconDisplay"] {
+  box-sizing: border-box;
+  min-width: 60px;
+  width: 4vmax;
+  min-height: 60px;
+  height: 4vmax;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.iconDisplayBlue{
+  background-color: #2980b9;
+}
+.iconDisplayGreen{
+  background-color: #1abc9c;
+}
+.iconDisplayYellow{
+  background-color: #f1c40f;
+}
+.iconDisplayRed{
+  background-color: #e74c3c;
+}
+.iconDisplaySpan {
+  font-size: 25px;
+  color: white;
+}
+.textDisplay{
+  box-sizing: border-box;
+  height: auto;
+  padding: 0 0 0 10px;
+  display: flex;
+  flex-grow: 1;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+h3[class^="textDisplayTitle"] {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  letter-spacing: 1px;
+  font-size: 15px;
+}
+.textDisplayTitlePurple {
+  color: #2980b9;
+}
+.textDisplayTitleGreen {
+  color: #1abc9c;
+}
+.textDisplayTitleYellow {
+  color: #f1c40f  ;
+}
+.textDisplayTitleRed{
+  color: #e74c3c;
+}
+.textDisplay p {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  color: gray;
+  letter-spacing: 0.5px;
+  font-size: 14px;
+}
+div[class^="appDisplay"] {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  background-color: white;
+  display: flex;
+  flex-grow: 1;
+  flex-flow: row nowrap;
+}
+.appDisplayCard {
+  align-items: center;
+}
+.appDisplayTextArea {
+  width: 100%;
+  height: auto;
+  padding: 5px;
+  text-align: justify;
+  color: gray;
+}
+.appDisplayTitle {
+  width: 250px;
+  padding: 5px;
+  color: black;
+  font-size: 20px;
+}
+.descriptionDisplay {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transition: 0.20s;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.descriptionDisplay p {
+  margin: 0 5px;
+  padding: 0;
+  flex-grow: 1;
+}
+.descriptionDisplay a {
+  margin: 0 5px;
+  padding: 0;
+  flex-grow: 1;
+}
+.infoWrap {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 10px;
+}
+.infoWrap h2 {
+  color: var(--lightBlack);
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.infoItem {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  transition: 0.20s;
+}
+.infoItem + .infoItem {
+  margin-top: 5px;
+}
+.infoItem i {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  padding: 5px;
+  display: flex;
+  flex-grow: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--lightBlack);
+  font-size: 20px;
+}
+.infoItem p {
+  width: 40px;
+  height: auto;
+  margin: 5px;
+  padding: 0;
+  display: flex;
+  flex-grow: 1;
+}
+.commentDatetime {
+  color: gray;
+}
+.infoItem a {
+  width: auto;
+  height: auto;
+  margin: 5px 10px 0 0;
+  padding: 0;
+  flex-grow: 0;
+}
+.comment {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0 0 5px 0;
+  display: flex;
+  flex-flow: row nowrap;
+}
+.comment + .comment {
+  border-top: solid 1px lightgray;
+  padding-top: 20px;
+}
+.commentAvatarWrap {
+  box-sizing: border-box;
+  min-width: 40px;
+  height: auto;
+  margin: 0 10px 0 0;
+  padding: 0 ;
+}
+.commentAvatarWrap img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.commentContent {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: transparent;
+}
+.commentContent p {
+  margin: 0 0 5px 0;
+  padding: 0;
+  line-height: 1.3;
+}
+.comentForm {
+  margin: 20px 0;
+  padding: 0;
+}
+.commentFormContent {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 5px;
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: #F8F8F8;
+}
+.commentFormContent form {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-grow: 1;
+  background-color: transparent;
+}
+.commentFormContent form textarea {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  margin: 0 10px;
+  padding: 0;
+  resize:none;
+  overflow:hidden;
+  background-color: transparent;
+  border: none;
+}
+.commentFormContent form textarea:focus {
+  border: none;
+  overflow: auto;
+  outline: none;*/
+}
+.lineBreak {
+  margin-top: 10px;
+}
+.projectHeader {
+  background-color: var(--lightBlack);
+  color: white;
+}
+.projectHeader .container {
+  display: flex;
+  flex-flow: row wrap;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: baseline;
+}
+/* Fonts */
+@font-face {
+  font-family: 'HandsOn';
+  src:  url('../fonts/HandsOn.eot?24rio2');
+  src:  url('../fonts/HandsOn.eot?24rio2#iefix') format('embedded-opentype'),
+        url('../fonts/HandsOn.ttf?24rio2') format('truetype'),
+        url('../fonts/HandsOn.woff?24rio2') format('woff'),
+        url('../fonts/HandsOn.svg?24rio2#HandsOn') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+[class^="icon-"], [class*=" icon-"] {
+  /* !important previne que extenções do browser mude a fontes e altere os ícones */
+  font-family: 'HandsOn' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-plus:before {
+  content: "\e909";
+}
+.icon-minus:before {
+  content: "\e907";
+}
+.icon-cross:before {
+  content: "\e900";
+}
+.icon-edit:before {
+  content: "\e901";
+}
+.icon-book:before {
+  content: "\e902";
+}
+.icon-environment:before {
+  content: "\e903";
+}
+.icon-globe:before {
+  content: "\e904";
+}
+.icon-group:before {
+  content: "\e905";
+}
+.icon-health:before {
+  content: "\e906";
+}
+.icon-pin:before {
+  content: "\e908";
+}
+.icon-profile:before {
+  content: "\e90a";
+}
+.icon-calendar:before {
+  content: "\e90f";
+}
+.icon-save:before {
+  content: "\e90b";
+}
+.icon-send:before {
+  content: "\e90c";
+}
+.icon-share:before {
+  content: "\e90d";
+}
+.icon-social:before {
+  content: "\e90e";
+}
+footer {
+  margin-top: 50px;
+}
+/*Form Validation Colors*/
+.has-warning .form-control {
+  border-color: #d9534f;
+}
+.has-success .form-control {
+  border-color: #5cb85c;
+}
+/*Add a default margin-top value*/
+.lineBreak {
+  margin-top: 20px;
+}
