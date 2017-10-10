@@ -1,7 +1,6 @@
 var Comment = require('../models/comment');
 var Project = require('../models/project');
 
-
 module.exports = {
   addComment: function(req, res) {
     console.log('entrou aqui')
@@ -9,31 +8,38 @@ module.exports = {
     console.log(req.body.text)
     Project.findOne({_id:req.body.id}, function(err, project) {
       if(err){
-        // <-------------------------------------------------------- add handler
-        console.log('caiu aqui1')
+        // Internal Server Error
+        res.status(500).send(err.errmsg);
+        console.log(err)
       } else if (!project) {
-        // <-------------------------------------------------------- add handler
-        console.log('caiu aqui2')
+        // Not Found
+        res.status(404).send(err.errmsg);
+        console.log(err)
       } else if (req.body.text == null) {
-        // <-------------------------------------------------------- add handler
-        console.log('caiu aqui3')
+        // Bad Request
+        res.status(400).send(err.errmsg);
+        console.log(err)
       } else {
         var comment = new Comment();
         comment.text = req.body.text
         comment._project = req.body.id
         comment.save(function (err, res) {
           if (err) {
-            // <---------------------------------------------------- add handler
-            console.log('caiu aqui4')
+            // Internal Server Error
+            res.status(500).send(err.errmsg);
+            console.log(err)
           } else {
             console.log(project.id)
             console.log(res._id)
             project.comments.push(res._id)
             project.save(function (err, res) {
               if (err) {
-                // <------------------------------------------------ add handler
+                // Internal Server Error
+                res.status(500).send(err.errmsg);
+                console.log(err)
               } else {
-                console.log('deu certo!')
+                res.status(200).send('The comment has been created');
+                console.log('A comment has been created');
               }
             })
           }
