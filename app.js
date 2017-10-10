@@ -21,7 +21,7 @@ app.use('/api', appRoutes);
 
 // App config
 const port = process.env.PORT || 8080; // Defines the port we're using to access the application;
-const dbUrl = 'mongodb://localhost:27017/usersDb'; // Defines the url we're using to connect to the database;
+const dbUrl = 'mongodb://localhost:27017/s2bDb'; // Defines the url we're using to connect to the database;
 
 // Database setup
 init.dbInit(dbUrl);
