@@ -9,21 +9,26 @@ appRoutes.config(function($routeProvider,$locationProvider) {
 
   $routeProvider
 
+  // Página home
   .when('/', {
     templateUrl: 'views/pages/home.html'
   })
+  // Página register
   .when('/register', {
     templateUrl: 'views/pages/register.html',
     controller: 'newUser'
   })
+  // Página Projects
   .when('/projects', {
     templateUrl: 'views/pages/projects.html',
     controller: 'getAllProjects'
   })
+  // Página de um projeto específico
   .when('/projects/:id', {
     templateUrl: 'views/pages/project.html',
     controller: 'getProjectById'
   })
+  // Redirect em caso de URL inválida
   .otherwise ({ redirectTo: '/' });
 
 })
