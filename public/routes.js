@@ -9,11 +9,6 @@ appRoutes.config(function($routeProvider,$locationProvider) {
   .when('/', {
     templateUrl: 'views/pages/home.html'
   })
-
-  .when('/about', {
-    templateUrl: 'views/pages/about.html'
-  })
-
   .when('/register', {
     templateUrl: 'views/pages/register.html',
     controller: 'newUser'
@@ -21,9 +16,11 @@ appRoutes.config(function($routeProvider,$locationProvider) {
   .when('/projects', {
     templateUrl: 'views/pages/projects.html',
     controller: 'getAllProjects'
-
   })
-
+  .when('/projects/:id', {
+    templateUrl: 'views/pages/project.html',
+    controller: 'getProjectById'
+  })
   .otherwise ({ redirectTo: '/' });
 
 })
