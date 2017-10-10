@@ -1,23 +1,44 @@
-var Comment = require('../models/coment');
+var Comment = require('../models/comment');
+var Project = require('../models/project');
+
 
 module.exports = {
-  //(post)
-  newComment: function(req,res){
-    var comment = new Comment();
-    comment.author  = req.body.author;
-    comment.project = req.body.project;
-    comment.content = req.body.content;
-    if (req.body.author == null || req.body.author == "" || req.body.project == null || req.body.project == "" || req.body.content == null || req.body.content == "") {
-      res.send('Ensure all requested data have been provided');
-    } else {
-      comment.save(function (err) {
-        if (err) {
-          res.status(500).send(err.errmsg);
-        } else {
-          res.status(200).send('The comment has been inserted');
-          console.log('The comment has been inserted');
-        }
-      });
-    }
+  addComment: function(req, res) {
+    console.log('entrou aqui')
+    console.log(req.body.id)
+    console.log(req.body.text)
+    Project.findOne({_id:req.body.id}, function(err, project) {
+      if(err){
+        // <-------------------------------------------------------- add handler
+        console.log('caiu aqui1')
+      } else if (!project) {
+        // <-------------------------------------------------------- add handler
+        console.log('caiu aqui2')
+      } else if (req.body.text == null) {
+        // <-------------------------------------------------------- add handler
+        console.log('caiu aqui3')
+      } else {
+        var comment = new Comment();
+        comment.text = req.body.text
+        comment._project = req.body.id
+        comment.save(function (err, res) {
+          if (err) {
+            // <---------------------------------------------------- add handler
+            console.log('caiu aqui4')
+          } else {
+            console.log(project.id)
+            console.log(res._id)
+            project.comments.push(res._id)
+            project.save(function (err, res) {
+              if (err) {
+                // <------------------------------------------------ add handler
+              } else {
+                console.log('deu certo!')
+              }
+            })
+          }
+        });
+      }
+    });
   }
 }

@@ -1,9 +1,10 @@
 var Project = require('../models/project');
+var Comment = require('../models/comment');
 
 module.exports = {
-  //(post)
   newProject: function(req,res){
     var project = new Project();
+    console.log(req)
     project.title = req.body.title; // Uses body-parser to parse http body json
     project.description = req.body.description;
     // project.places = req.body.places;
@@ -23,7 +24,6 @@ module.exports = {
       });
     }
   },
-  //(get)
   getAllProjects: function(req, res){
       Project.find({}, function (err, content){
         if(err) {
@@ -37,5 +37,21 @@ module.exports = {
           console.log('The content has been sent');
         }
       })
+  },
+  getProjectById: function(req, res){
+    if(req.params && req.params.id) {
+      Project.findOne({_id:req.params.id}, function(err, content) {
+        if (err) {
+          console.log(err);
+          res.status(500).json(err);
+        } else if (!content) {
+          console.log('Project not fount');
+          res.status(404).json({message:'Project not found'});
+        } else {
+          console.log(JSON.stringify(content));
+          res.status(200).json(content);
+        }
+      })
+    }
   }
 }
