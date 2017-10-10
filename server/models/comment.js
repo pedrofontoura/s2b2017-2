@@ -2,10 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var CommentSchema = new Schema({
-  author: {type: Schema.Types.ObjectId, ref: 'User',  required:true}
-  project: {type: Schema.Types.ObjectId, ref: 'Project', required:true}
-  content: {type: String, required:true},
-  // time: {type: Number, required: true},
+  _project: {type: Schema.Types.ObjectId, ref: 'Project', required:true},
+  text: {type: String, required:true},
+  createDate:{type: Date, required: true, default: Date.now}
 })
 
-module.exports = mongoose.model('Project', ProjectSchema);
+module.exports = mongoose.model('Comment', CommentSchema);
