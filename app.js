@@ -3,6 +3,7 @@ var express = require('express');
 var app = express();
 var morgan = require('morgan');
 var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 var bodyParser = require('body-parser')
 var router = express.Router();
 var appRoutes = require('./server/routes/index')(router);
@@ -27,12 +28,12 @@ init.dbInit(dbUrl);
 
 // Indica a view index.html como padrão para conexão via localhost;
 app.get('/', function(req, res){
-  res.sendFile(path.join(__dirname + '/public/views/index.html'))
+  res.sendFile(path.join(__dirname + '/public/index.html'))
 });
 
 // Redireciona páginas
 app.get('*', function(req, res){
-  res.sendFile(path.join(__dirname + '/public/views/index.html'))
+  res.sendFile(path.join(__dirname + '/public/index.html'))
 });
 
 //Server port setup;
