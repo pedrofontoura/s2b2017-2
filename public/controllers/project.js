@@ -1,5 +1,7 @@
+// Criação do módulo e injeção de dependências
 var projectControllers = angular.module('projectControllers', []);
 
+// Função que adiciona um novo projeto [POST]
 projectControllers.controller('newProject', function($scope, $http){
   console.log('testing projectController')
   $scope.onSubmit = newProject;
@@ -10,6 +12,7 @@ projectControllers.controller('newProject', function($scope, $http){
   }
 })
 
+// Função que busca todos os projetos existentes [GET]
 projectControllers.controller('getAllProjects', function($scope, $http) {
   getAllProjects();
   function getAllProjects(){
@@ -19,6 +22,7 @@ projectControllers.controller('getAllProjects', function($scope, $http) {
   }
 })
 
+// Função que busca um projeto específico a partir do seu id [GET] 
 projectControllers.controller('getProjectById', function($scope, $http, $routeParams) {
   $scope.getProjectById = function (){
     console.log('entrou aqui')

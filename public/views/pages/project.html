@@ -98,10 +98,10 @@
               <div class="commentAvatarWrap">
                 <img class="avatarImg" src="profile5.png" alt="?">
               </div>
-              <div class="commentFormContent">
-                <form>
-                  <textarea  rows="3" placeholder="Type a comment..." type="text"></textarea>
-                  <button type="button" class="commentSendBtn appBtn btn">Send<i class="  icon-send"></i></button>
+              <div ng-controller="newComment" class="commentFormContent">
+                <form ng-submit="onSubmit()" >
+                  <textarea ng-model="text" rows="3" placeholder="Type a comment..." type="text"></textarea>
+                  <button type="submit" class="commentSendBtn appBtn btn">Send<i class="  icon-send"></i></button>
                 </form>
               </div>
             </div>
