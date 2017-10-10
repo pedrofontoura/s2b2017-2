@@ -1,7 +1,10 @@
+// Criação do módulo e injeção de dependências
 var appRoutes = angular.module('appRoutes', ['ngRoute'])
 
+// Inializando configurações de rota
 appRoutes.config(function($routeProvider,$locationProvider) {
 
+  // Removendo # da URL
   $locationProvider.html5Mode(true);
 
   $routeProvider
