@@ -46,5 +46,37 @@ module.exports = {
         });
       }
     });
+  },
+  deleteCommentById: function(req, res) {
+    if(req.params && req.params.id) {
+      Comment.findById(req.params.id, function(err, comment) {
+        if(err) {
+          // Internal Server Error
+          res.status(500).send(err.errmsg);
+          console.log(err.errmsg)
+        } else {
+          Project.findById(comment._project, function(err, project) {
+            if(err) {
+              // Internal Server Error
+              res.status(500).send(err.errmsg);
+              console.log(err.errmsg);
+            } else {
+              project.comments.splice(project.comments.indexOf(req.params.id),1);
+              Comment.findByIdAndRemove(req.params.id, function(err) {
+                if(err) {
+                  // Internal Server Error
+                  res.status(500).send(err.errmsg);
+                  console.log(err.errmsg);
+                } else {
+                  // OK
+                  res.status(200).send('The comment has been deleted');
+                  console.log('A comment has been deleted')
+                }
+              });
+            }
+          });
+        }
+      });
+    }
   }
 }
