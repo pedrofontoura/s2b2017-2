@@ -23,7 +23,7 @@ module.exports = {
         var comment = new Comment();
         comment.text = req.body.text
         comment._project = req.body.id
-        comment.save(function (err, res) {
+        comment.save(function (err) {
           if (err) {
             // Internal Server Error
             res.status(500).send(err.errmsg);
@@ -32,7 +32,7 @@ module.exports = {
             console.log(project.id)
             console.log(res._id)
             project.comments.push(res._id)
-            project.save(function (err, res) {
+            project.save(function (err) {
               if (err) {
                 // Internal Server Error
                 res.status(500).send(err.errmsg);
