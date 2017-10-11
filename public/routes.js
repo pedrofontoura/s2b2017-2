@@ -18,6 +18,10 @@ appRoutes.config(function($routeProvider,$locationProvider) {
     templateUrl: 'views/pages/register.html',
     controller: 'newUser'
   })
+  // Página about
+  .when('/about', {
+    templateUrl: 'views/pages/about.html'
+  })
   // Página Projects
   .when('/projects', {
     templateUrl: 'views/pages/projects.html',
