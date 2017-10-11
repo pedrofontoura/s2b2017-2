@@ -15,9 +15,9 @@ module.exports = {
         // Not Found
         res.status(404).send(err.errmsg);
         console.log(err)
-      } else if (req.body.text == null) {
+      } else if (req.body.text == null || req.body.text == "") {
         // Bad Request
-        res.status(400).send(err.errmsg);
+        res.status(400).send('no text');
         console.log(err)
       } else {
         var comment = new Comment();
@@ -38,7 +38,7 @@ module.exports = {
                 res.status(500).send(err.errmsg);
                 console.log(err)
               } else {
-                res.status(200).send('The comment has been created');
+                res.status(201).send('The comment has been created');
                 console.log('A comment has been created');
               }
             })
