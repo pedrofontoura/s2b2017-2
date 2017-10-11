@@ -1,13 +1,50 @@
-// Criação do módulo e injeção de dependências
-var commentControllers = angular.module('commentControllers', [])
+var Comment = require('../models/comment');
+var Project = require('../models/project');
 
-// Função que adiciona um novo comentário [POST]
-commentControllers.controller('newComment',function($scope,$http,$routeParams) {
-    $scope.onSubmit = newComment;
-    function newComment(){
-      var newComment = { id : $routeParams.id , text : $scope.text };
-      $http.post('http://localhost:8080/api/comments', newComment).then(function(data) {
-        console.log(data);
-      });
-    }
-});
+module.exports = {
+  addComment: function(req, res) {
+    console.log('entrou aqui')
+    console.log(req.body.id)
+    console.log(req.body.text)
+    Project.findOne({_id:req.body.id}, function(err, project) {
+      if(err){
+        // Internal Server Error
+        res.status(500).send(err.errmsg);
+        console.log(err)
+      } else if (!project) {
+        // Not Found
+        res.status(404).send(err.errmsg);
+        console.log(err)
+      } else if (req.body.text == null) {
+        // Bad Request
+        res.status(400).send(err.errmsg);
+        console.log(err)
+      } else {
+        var comment = new Comment();
+        comment.text = req.body.text
+        comment._project = req.body.id
+        comment.save(function (err) {
+          if (err) {
+            // Internal Server Error
+            res.status(500).send(err.errmsg);
+            console.log(err)
+          } else {
+            console.log(project.id)
+            console.log(res._id)
+            project.comments.push(res._id)
+            project.save(function (err) {
+              if (err) {
+                // Internal Server Error
+                res.status(500).send(err.errmsg);
+                console.log(err)
+              } else {
+                res.status(200).send('The comment has been created');
+                console.log('A comment has been created');
+              }
+            })
+          }
+        });
+      }
+    });
+  }
+}
