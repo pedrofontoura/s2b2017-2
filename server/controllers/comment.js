@@ -30,8 +30,7 @@ module.exports = {
             console.log(err)
           } else {
             console.log(project.id)
-            console.log(res._id)
-            project.comments.push(res._id)
+            project.comments.push(comment._id)
             project.save(function (err) {
               if (err) {
                 // Internal Server Error
@@ -43,6 +42,25 @@ module.exports = {
               }
             })
           }
+        });
+      }
+    });
+  },
+  // Função que entrega todos os comentários vinculados a um determinado projeto [GET]
+  getProjectComments: function(req, res){
+    Project.findOne({_id:req.params.id}, function(err, project) {
+      if (err) {
+        // Internal Server Error
+        res.status(500).send(err.errmsg);
+        console.log(err)
+      } else if (!project) {
+        // Not Found
+        res.status(404).send(err.errmsg);
+        console.log(err)
+      } else {
+        Comment.find({ _id : { $in : project.comments }}, function(err,content) {
+          // OK
+          res.status(200).send(content);
         });
       }
     });

@@ -91,72 +91,27 @@
         </section>
       </div>
       <div class="col-7">
-        <section class="pageComments">
+        <section ng-controller="getProjectComments" ng-init="getProjectComments()" class="pageComments">
           <div class="infoWrap boxShadow">
             <h2>Coments</h2>
             <div class="comment comentForm">
               <div class="commentAvatarWrap">
                 <img class="avatarImg" src="profile5.png" alt="?">
               </div>
-              <div ng-controller="newComment" class="commentFormContent">
+              <div  ng-controller="newComment" class="commentFormContent">
                 <form ng-submit="onSubmit()" >
                   <textarea ng-model="text" rows="3" placeholder="Type a comment..." type="text"></textarea>
                   <button type="submit" class="commentSendBtn appBtn btn">Send<i class="  icon-send"></i></button>
                 </form>
               </div>
             </div>
-            <div class="comment">
+            <div ng-repeat="comment in comments" class="comment">
               <div class="commentAvatarWrap">
-                <img class="avatarImg" src="profile1.png" alt="?">
+                <!-- <img class="avatarImg" src="profile1.png" alt="?"> -->
               </div>
               <div class="commentContent">
-                <p><a href="#">Thomaz Zandonotto </a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate, ante consectetur ornare efficitur, erat erat fringilla odio, a euismod lacus leo lobortis libero. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-                <p class="small commentDatetime">December 14, 2017 at 12:33pm</p>
-              </div>
-            </div>
-            <div class="comment">
-              <div class="commentAvatarWrap">
-                <img class="avatarImg" src="profile4.png" alt="?">
-              </div>
-              <div class="commentContent">
-                <p><a href="#">John Doe </a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate, ante consectetur ornare efficitur, erat erat fringilla.</p>
-                <p class="small commentDatetime">December 10, 2017 at 4:24pm</p>
-              </div>
-            </div>
-            <div class="comment">
-              <div class="commentAvatarWrap">
-                <img class="avatarImg" src="profile2.png" alt="?">
-              </div>
-              <div class="commentContent">
-                <p><a href="#">Mary Doe </a>Donec commodo, nisi quis dapibus imperdiet, justo ex mattis lacus, mollis interdum mi magna sed lorem. Suspendisse condimentum facilisis elit, quis eleifend erat ultrices a. Nunc a consequat purus. Sed auctor luctus finibus. Aenean quis odio sem. Nam ipsum ligula, efficitur eget ante nec, finibus facilisis metus. Aenean vitae elit tellus. Nulla facilisi. Vestibulum consectetur lectus eros, in feugiat enim rhoncus quis. Cras in mattis arcu.</p>
-                <p class="small commentDatetime">November 28, 2017 at 7:13am</p>
-              </div>
-            </div>
-            <div class="comment">
-              <div class="commentAvatarWrap">
-                <img class="avatarImg" src="profile1.png" alt="?">
-              </div>
-              <div class="commentContent">
-                <p><a href="#">Thomaz Zandonotto </a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate, ante consectetur ornare efficitur, erat erat fringilla odio, a euismod lacus leo lobortis libero. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
-                <p class="small commentDatetime">December 14, 2017 at 12:33pm</p>
-              </div>
-            </div>
-            <div class="comment">
-              <div class="commentAvatarWrap">
-                <img class="avatarImg" src="profile4.png" alt="?">
-              </div>
-              <div class="commentContent">
-                <p><a href="#">John Doe </a>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vulputate, ante consectetur ornare efficitur, erat erat fringilla.</p>
-                <p class="small commentDatetime">December 10, 2017 at 4:24pm</p>
-              </div>
-            </div>
-            <div class="comment">
-              <div class="commentAvatarWrap">
-                <img class="avatarImg" src="profile2.png" alt="?">
-              </div>
-              <div class="commentContent">
-                <p><a href="#">Mary Doe </a>Donec commodo, nisi quis dapibus imperdiet, justo ex mattis lacus, mollis interdum mi magna sed lorem. Suspendisse condimentum facilisis elit, quis eleifend erat ultrices a. Nunc a consequat purus. Sed auctor luctus finibus. Aenean quis odio sem. Nam ipsum ligula, efficitur eget ante nec, finibus facilisis metus. Aenean vitae elit tellus. Nulla facilisi. Vestibulum consectetur lectus eros, in feugiat enim rhoncus quis. Cras in mattis arcu.</p>
-                <p class="small commentDatetime">November 28, 2017 at 7:13am</p>
+                <p><!-- <a href="#">Thomaz Zandonotto </a> -->{{comment.text}}</p>
+                <p class="small commentDatetime">{{comment.createDate}} - <a ng-controller="deleteComment" ng-click="deleteComment(comment.id)">Delete</a></p>
               </div>
             </div>
           </section>

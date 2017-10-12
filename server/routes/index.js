@@ -8,5 +8,6 @@ module.exports = function(router){
   router.get('/projects', ctrlProject.getAllProjects);
   router.get('/projects/:id', ctrlProject.getProjectById);
   router.post('/comments', ctrlComment.addComment);
+  router.get('/comments/:id', ctrlComment.getProjectComments)
   return router;
 }
