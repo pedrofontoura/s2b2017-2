@@ -2,6 +2,7 @@ var Comment = require('../models/comment');
 var Project = require('../models/project');
 
 module.exports = {
+  // Função que adiciona um comentário a um determinado projeto [STATUS]
   addComment: function(req, res) {
     console.log('entrou aqui')
     console.log(req.body.id)
@@ -46,7 +47,7 @@ module.exports = {
       }
     });
   },
-  // Função que deleta um comentário especificado dado o seu _ID [GET]
+  // Função que deleta um comentário especificado dado o seu _ID [DELETE]
   deleteCommentById: function(req, res) {
     console.log('Entrou Aqui')
     if(req.params && req.params.id) {
@@ -98,8 +99,8 @@ module.exports = {
         console.log(err)
       } else if (!project) {
         // Not Found
-        res.status(404).send(err.errmsg);
-        console.log(err)
+        res.status(404).json({mensagem:'Comment not found'})
+        console.log('Comment not found')
       } else {
         Comment.find({ _id : { $in : project.comments }}, function(err,content) {
           // OK
