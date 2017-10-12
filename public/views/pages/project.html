@@ -107,11 +107,16 @@
             </div>
             <div ng-repeat="comment in comments" class="comment">
               <div class="commentAvatarWrap">
-                <!-- <img class="avatarImg" src="profile1.png" alt="?"> -->
+                <img class="avatarImg" src="profile1.png" alt="?">
               </div>
               <div class="commentContent">
-                <p><!-- <a href="#">Thomaz Zandonotto </a> -->{{comment.text}}</p>
-                <p class="small commentDatetime">{{comment.createDate}} - <a ng-controller="deleteComment" ng-click="deleteComment(comment._id)" href="/projects/{{comment._project}}">Delete</a></p>
+                <p><a href="#">John Doe </a>{{comment.text}}</p>
+                <p class="small commentDatetime">
+                  {{comment.createDate}} -
+                  <a ng-controller="deleteComment" ng-click="deleteComment(comment._id)" href="/projects/{{comment._project}}">Edit</a> -
+                  <a ng-controller="deleteComment" ng-click="deleteComment(comment._id)" href="/projects/{{comment._project}}">Delete</a> -
+                  <a ng-controller="deleteComment" ng-click="deleteComment(comment._id)" href="/projects/{{comment._project}}">Reply</a>
+                </p>
               </div>
             </div>
           </section>

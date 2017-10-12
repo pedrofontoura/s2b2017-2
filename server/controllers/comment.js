@@ -62,14 +62,8 @@ module.exports = {
               res.status(500).send(err.errmsg);
               console.log(err.errmsg);
             } else {
-              console.log('-----------------------------------------------------------------------------')
-              console.log(req.params.id)
-              console.log(project.comments)
-              console.log('-----------------------------------------------------------------------------')
               var i = req.params.id.indexOf()
               project.comments.splice(project.comments.i,1);
-              console.log(project.comments)
-              console.log('-----------------------------------------------------------------------------')
               project.save(function (err) {
                 if (err) {
                   // Internal Server Error
