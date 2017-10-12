@@ -111,7 +111,7 @@
               </div>
               <div class="commentContent">
                 <p><!-- <a href="#">Thomaz Zandonotto </a> -->{{comment.text}}</p>
-                <p class="small commentDatetime">{{comment.createDate}} - <a ng-click="onClick()" href="/projects/{{comment._project}}">Delete</a></p>
+                <p class="small commentDatetime">{{comment.createDate}} - <a ng-controller="deleteComment" ng-click="deleteComment(comment._id)" href="/projects/{{comment._project}}">Delete</a></p>
               </div>
             </div>
           </section>

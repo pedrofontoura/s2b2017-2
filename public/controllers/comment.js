@@ -23,13 +23,11 @@ commentControllers.controller('getProjectComments', function($scope,$http,$route
 });
 
 //Função que solicita delete de um comentário vinculado a um project [DELETE]
-commentControllers.controller('deleteComment', function($scope) {
-  $scope.onClick = deleteComment;
-  function deleteComment() {
-    console.log('chamou bem');
-    // var id = ;
-    // http.delete('http://localhost:8080/api/comments/'+id).then(function(data) {
-    //   $scope.getProjectComments();
-    // });
+commentControllers.controller('deleteComment', function($http,$scope) {
+  $scope.deleteComment = function(commentId){
+    console.log(commentId)
+    $http.delete('http://localhost:8080/api/comments/'+commentId).then(function(comments) {
+      $scope.getProjectComments();
+    });
   }
 });
