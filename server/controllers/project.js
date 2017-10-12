@@ -1,5 +1,4 @@
 var Project = require('../models/project');
-var Comment = require('../models/comment');
 
 module.exports = {
   newProject: function(req,res){
@@ -19,7 +18,7 @@ module.exports = {
           res.status(500).send(err.errmsg);
         } else {
           res.status(200).send('The project has been created');
-          console.log('The project has been created');
+          console.log('A project has been created');
         }
       });
     }
@@ -34,7 +33,7 @@ module.exports = {
           res.status(404).json({mensagem:'empty resource'})
         } else {
           res.status(201).json(content)
-          console.log('The content has been sent');
+          console.log('A content has been sent');
         }
       })
   },

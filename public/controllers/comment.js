@@ -3,7 +3,7 @@ var commentControllers = angular.module('commentControllers', [])
 
 // Função que solicita adição de um novo comentário [POST]
 commentControllers.controller('newComment',function($scope,$http,$routeParams) {
-  $scope.onSubmit = newComment;
+  $scope.onSubmit = newComment
   function newComment(){
     var newComment = { id : $routeParams.id , text : $scope.text };
     $http.post('http://localhost:8080/api/comments', newComment).then(function(data) {
@@ -23,14 +23,13 @@ commentControllers.controller('getProjectComments', function($scope,$http,$route
 });
 
 //Função que solicita delete de um comentário vinculado a um project [DELETE]
-commentControllers.controller('deleteComment', function($scope,$http,routeParams) {
-  console.log('entrou bem');
-  $scope.onSubmit = deleteComment();
+commentControllers.controller('deleteComment', function($scope) {
+  $scope.onClick = deleteComment;
   function deleteComment() {
     console.log('chamou bem');
     // var id = ;
     // http.delete('http://localhost:8080/api/comments/'+id).then(function(data) {
-    //   // Refresh nos comentárioss
+    //   $scope.getProjectComments();
     // });
   }
 });

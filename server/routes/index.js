@@ -9,5 +9,6 @@ module.exports = function(router){
   router.get('/projects/:id', ctrlProject.getProjectById);
   router.post('/comments', ctrlComment.addComment);
   router.get('/comments/:id', ctrlComment.getProjectComments)
+  router.delete('/comments/:id', ctrlComment.deleteCommentById);
   return router;
 }
