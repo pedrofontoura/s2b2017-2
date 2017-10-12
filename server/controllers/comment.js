@@ -35,18 +35,20 @@ module.exports = {
               if (err) {
                 // Internal Server Error
                 res.status(500).send(err.errmsg);
-                console.log(err)
+                console.log(err);
               } else {
                 res.status(201).send('The comment has been created');
                 console.log('A comment has been created');
               }
-            })
+            });
           }
         });
       }
     });
   },
+  // Função que deleta um comentário especificado dado o seu _ID [GET]
   deleteCommentById: function(req, res) {
+    console.log('Entrou Aqui')
     if(req.params && req.params.id) {
       Comment.findById(req.params.id, function(err, comment) {
         if(err) {
@@ -60,16 +62,31 @@ module.exports = {
               res.status(500).send(err.errmsg);
               console.log(err.errmsg);
             } else {
-              project.comments.splice(project.comments.indexOf(req.params.id),1);
-              Comment.findByIdAndRemove(req.params.id, function(err) {
-                if(err) {
+              console.log('-----------------------------------------------------------------------------')
+              console.log(req.params.id)
+              console.log(project.comments)
+              console.log('-----------------------------------------------------------------------------')
+              var i = req.params.id.indexOf()
+              project.comments.splice(project.comments.i,1);
+              console.log(project.comments)
+              console.log('-----------------------------------------------------------------------------')
+              project.save(function (err) {
+                if (err) {
                   // Internal Server Error
                   res.status(500).send(err.errmsg);
-                  console.log(err.errmsg);
+                  console.log(err);
                 } else {
-                  // OK
-                  res.status(200).send('The comment has been deleted');
-                  console.log('A comment has been deleted')
+                  Comment.findByIdAndRemove(req.params.id, function(err) {
+                    if(err) {
+                      // Internal Server Error
+                      res.status(500).send(err.errmsg);
+                      console.log(err.errmsg);
+                    } else {
+                      // OK
+                      res.status(200).send('The comment has been deleted');
+                      console.log('A comment has been deleted')
+                    }
+                  });
                 }
               });
             }
