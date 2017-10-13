@@ -40,5 +40,5 @@ app.get('*', function(req, res){
 
 //Server port setup;
 app.listen(port, function() {
-  console.log('running the server on port ' + port);
+  console.log('Running the server on port ' + port);
 });
