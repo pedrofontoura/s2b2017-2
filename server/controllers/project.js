@@ -63,5 +63,39 @@ module.exports = {
         }
       })
     }
+  },
+  // Remove um comentário específico da base de dados (id)
+  deleteProjectById: function(req, res) {
+    console.log('------------- entrou aqui -----------------')
+    if(req.params && req.params.id) {
+      Project.findOne({_id:req.params.id}, function(err, content) {
+        if(err) {
+          // Internal Server Error
+          res.status(500).send(err.errmsg);
+          console.log(err.errmsg);
+        } else if(!content) {
+          // Not Found
+          res.status(404).json({message: 'Project not found'});
+          console.log('Project not found)');
+        } else {
+          // Deletando os comentários do projeto
+          for(var comment of project.comments) {
+            Comment.findOneAndRemove({_id:comment._id}); // unsafe
+          }
+          // Deletando o projeto
+          Project.findOneAndRemove({_id:req.params.id}, function(err) {
+            if(err) {
+              // Internal Server Error
+              res.status(500).send(err.errmsg);
+              console.log(err.errmsg);
+            } else {
+              // OK
+              res.status(200).send('The project has been deleted');
+              console.log('A project has been deleted');
+            }
+          });
+        }
+      }); 
+    }
   }
 }
