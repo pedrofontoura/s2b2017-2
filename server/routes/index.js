@@ -3,12 +3,13 @@ var ctrlProject = require('../controllers/project');
 var ctrlComment = require('../controllers/comment');
 
 module.exports = function(router){
-  router.post('/user', ctrlUser.newUser)
-  router.post('/projects', ctrlProject.newProject);
-  router.get('/projects', ctrlProject.getAllProjects);
+  router.get('/projects/comments/:id', ctrlComment.getProjectComments);
   router.get('/projects/:id', ctrlProject.getProjectById);
-  router.post('/comments', ctrlComment.addComment);
-  router.get('/comments/:id', ctrlComment.getProjectComments)
+  router.get('/projects', ctrlProject.getAllProjects);
+  router.post('/projects', ctrlProject.createProject);
+  router.get('/comments/:id', ctrlComment.getCommentById);
+  router.post('/comments', ctrlComment.createComment);
   router.delete('/comments/:id', ctrlComment.deleteCommentById);
+  router.post('/user', ctrlUser.newUser);
   return router;
 }
