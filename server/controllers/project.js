@@ -1,9 +1,8 @@
 var Project = require('../models/project');
 
 module.exports = {
-  newProject: function(req,res){
+  createProject: function(req,res){
     var project = new Project();
-    console.log(req)
     project.title = req.body.title; // Uses body-parser to parse http body json
     project.description = req.body.description;
     // project.places = req.body.places;
