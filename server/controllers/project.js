@@ -1,6 +1,7 @@
 var Project = require('../models/project');
 
 module.exports = {
+  // Cria um novo projeto na base de dados
   createProject: function(req,res){
     var project = new Project();
     project.title = req.body.title; // Uses body-parser to parse http body json
@@ -14,40 +15,51 @@ module.exports = {
     } else {
       project.save(function (err) {
         if (err) {
+          // Internal Server Error
           res.status(500).send(err.errmsg);
+          console.log(err.errmsg);
         } else {
-          res.status(200).send('The project has been created');
+          // Created
+          res.status(201).send('The project has been created');
           console.log('A project has been created');
         }
       });
     }
   },
+  // Recupera todos os projetos existentes na base de dados
   getAllProjects: function(req, res){
       Project.find({}, function (err, content){
         if(err) {
+          // Internal Server Error
+          res.status(500).send(err.errmsg);
           console.log(err);
-          res.status(500).json(err)
         } else if(res.lenght==0) {
-          console.log('Empty search.');
+          // Not Found
           res.status(404).json({mensagem:'empty resource'})
+          console.log('Empty search.');
         } else {
-          res.status(201).json(content)
-          console.log('A content has been sent');
+          // OK
+          res.status(200).json(content)
+          console.log('A content has been sent (getAllProjects)');
         }
       })
   },
+  // Recupera um projeto específico da base de dados (id)
   getProjectById: function(req, res){
     if(req.params && req.params.id) {
       Project.findOne({_id:req.params.id}, function(err, content) {
         if (err) {
-          console.log(err);
-          res.status(500).json(err);
+          // Internal Server Error
+          res.status(500).send(err.errmsg);
+          console.log(err.errmsg);
         } else if (!content) {
-          console.log('Project not fount');
+          // Not Found
           res.status(404).json({message:'Project not found'});
+          console.log('Project not found');
         } else {
-          console.log(JSON.stringify(content));
+          // OK
           res.status(200).json(content);
+          console.log(JSON.stringify(content));
         }
       })
     }
