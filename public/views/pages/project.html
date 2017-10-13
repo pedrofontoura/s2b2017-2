@@ -1,5 +1,5 @@
 <div ng-init="getProjectById()">
-  <div class="projectHeader">
+  <div class="profileHeader">
     <div class="container">
       <h1 class="display-3">{{ project.title }}</h1>
       <p class="profileInfo"> Created by <a href="#">AIESEC</a></p>
@@ -107,7 +107,7 @@
             </div>
             <div ng-repeat="comment in comments" class="comment">
               <div class="commentAvatarWrap">
-                <img class="avatarImg" src="assets/raster/profile{{$index + 2}}.png" alt="?">
+                <img class="avatarImg" src="assets/raster/profile0.png" alt="?">
               </div>
               <div class="commentContent">
                 <p><a href="#">John Doe </a>{{comment.text}}</p>
