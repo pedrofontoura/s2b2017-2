@@ -29,11 +29,13 @@ init.dbInit(dbUrl);
 // Indica a view index.html como padrão para conexão via localhost;
 app.get('/', function(req, res){
   res.sendFile(path.join(__dirname + '/public/index.html'))
+  console.log('Accessed by the root path')
 });
 
 // Redireciona páginas
 app.get('*', function(req, res){
   res.sendFile(path.join(__dirname + '/public/index.html'))
+  console.log('Redirected based on unmatched request')
 });
 
 //Server port setup;
