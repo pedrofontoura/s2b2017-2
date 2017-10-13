@@ -2,8 +2,9 @@ var Comment = require('../models/comment');
 var Project = require('../models/project');
 
 module.exports = {
+
   // Função que adiciona um comentário a um determinado projeto [STATUS]
-  addComment: function(req, res) {
+  createComment: function(req, res) {
     console.log('entrou aqui')
     console.log(req.body.id)
     console.log(req.body.text)
@@ -14,7 +15,7 @@ module.exports = {
         console.log(err)
       } else if (!project) {
         // Not Found
-        res.status(404).send(err.errmsg);
+        res.status(404).send('Comment not found');
         console.log(err)
       } else if (req.body.text == null || req.body.text == "") {
         // Bad Request
@@ -47,9 +48,9 @@ module.exports = {
       }
     });
   },
+
   // Função que deleta um comentário especificado dado o seu _ID [DELETE]
   deleteCommentById: function(req, res) {
-    console.log('Entrou Aqui')
     if(req.params && req.params.id) {
       Comment.findById(req.params.id, function(err, comment) {
         if(err) {
@@ -63,8 +64,8 @@ module.exports = {
               res.status(500).send(err.errmsg);
               console.log(err.errmsg);
             } else {
-              var i = req.params.id.indexOf()
-              project.comments.splice(project.comments.i,1);
+              var i = project.comments.indexOf(req.params.id);
+              project.comments.splice(i,1);
               project.save(function (err) {
                 if (err) {
                   // Internal Server Error
@@ -90,6 +91,17 @@ module.exports = {
       });
     }
   },
+
+  // Função que entrega os valores das propriedades de um determindo comentário [GET]
+  getCommentById: function(req,res){
+    console.log('Entrou no getProjectById')
+  },
+
+  // Função que edita os valores das propriedades de um determinado comentário [EDIT]
+  editCommentById: function(req, res){
+    console.log('Entrou no editCommentById')
+  },
+
   // Função que entrega todos os comentários vinculados a um determinado projeto [GET]
   getProjectComments: function(req, res){
     Project.findOne({_id:req.params.id}, function(err, project) {
@@ -109,4 +121,5 @@ module.exports = {
       }
     });
   }
+
 }
