@@ -1,4 +1,5 @@
 var Project = require('../models/project');
+var Comment = require('../models/comment');
 
 module.exports = {
   // Cria um novo projeto na base de dados
@@ -66,7 +67,6 @@ module.exports = {
   },
   // Remove um comentário específico da base de dados (id)
   deleteProjectById: function(req, res) {
-    console.log('------------- entrou aqui -----------------')
     if(req.params && req.params.id) {
       Project.findOne({_id:req.params.id}, function(err, content) {
         if(err) {
@@ -76,11 +76,12 @@ module.exports = {
         } else if(!content) {
           // Not Found
           res.status(404).json({message: 'Project not found'});
-          console.log('Project not found)');
+          console.log('Project not found');
         } else {
           // Deletando os comentários do projeto
-          for(var comment of project.comments) {
-            Comment.findOneAndRemove({_id:comment._id}); // unsafe
+          for(var comment of content.comments) {
+            Comment.findOneAndRemove({_id:comment._id}); // sem handlers
+            console.log('comment deleted')
           }
           // Deletando o projeto
           Project.findOneAndRemove({_id:req.params.id}, function(err) {
