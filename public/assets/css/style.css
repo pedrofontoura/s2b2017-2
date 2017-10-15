@@ -13,6 +13,17 @@ html {
 body {
   overflow-y:scroll;
 }
+h1, h2, h3 {
+  font-weight: lighter;
+}
+table {
+  padding: 0;
+  margin: 0;
+}
+.table {
+  margin: 0;
+  padding: 0;
+}
 .row {
   margin-top: 20px;
 }
@@ -33,7 +44,6 @@ body {
   align-items: center;
   justify-content: center;
   border: none;
-  border: none;
   border-radius: 0;
   background-color: transparent;
   font-size: 15px;
@@ -41,14 +51,6 @@ body {
   color: white;
   cursor: pointer;
 }
-/*.someButton {
-  width:;
-  height:;
-  flex-grow:;
-  font-size:; //Optional
-  background-color:; //Optional
-  color:; //Optional
-}*/
 .commentSendBtn {
   width:auto;
   height:30px;
@@ -342,7 +344,6 @@ div[class^="appDisplay"] {
 footer {
   margin-top: 50px;
 }
-/* Fonts */
 @font-face {
   font-family: 'HandsOn';
   src:  url('../fonts/HandsOn.eot?24rio2');
@@ -414,14 +415,12 @@ footer {
 .icon-social:before {
   content: "\e90e";
 }
-/*Form Validation Colors*/
 .has-warning .form-control {
   border-color: #d9534f;
 }
 .has-success .form-control {
   border-color: #5cb85c;
 }
-/*Add a default margin-top value*/
 .lineBreak {
   margin-top: 20px;
 }
@@ -450,6 +449,8 @@ footer {
   box-sizing: border-box;
   width: 50px;
   height: 200 0px;
+  display: flex;
+  flex-flow: row nowrap;
   margin: 0 0 0 160px;.
   background-color: black;
 }
@@ -471,7 +472,61 @@ footer {
   margin: 0 0 0 160px;
   padding-bottom: 10px;
   color: white;
+  font-weight: lighter;
 }
 .profileAvatarCropper img {
   width: 100%;
+}
+[class*="profileNavdBtn"] {
+  box-sizing: border-box;
+  width:auto;
+  height:40px;
+  margin: 0;
+  padding: 0 20px;
+  flex-grow:0;
+  font-size: 15px;
+  background-color: white;
+  color: var(--lightBlack);
+  align-self: flex-end;
+  border: transparent solid 2px;
+}
+[class*="profileNavdBtn"] + [class*="profileNavdBtn"] {
+    margin-left: 10px;
+}
+.profileNavdBtnCurrent {
+  border-bottom: lightgray solid 2px;
+}
+[class*="tabWrap"] {
+  display: none;
+}
+.tabWrapCurrent {
+  display: block;
+}
+.contentBar {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.20s;
+}
+.contentBar + .contentBar {
+  margin-top: 10px;
+}
+.contentBar h2 {
+  margin-right: 20px;
+}
+.contentBar form {
+  box-sizing: border-box;
+  width: auto;
+  min-width: 150px;
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.20s;
 }

@@ -9,50 +9,161 @@
 <div class="navBackground">
   <div class="container">
     <div class="profileNav">
+      <button type="button" id="aboutButton" class="profileNavdBtn appBtn btn" onclick="openTab(event,'About', 'aboutButton')">About</button>
+      <button type="button" id="projectsButton" class="profileNavdBtn appBtn btn" onclick="openTab(event,'Projects', 'projectsButton')">Projects</button>
+      <button type="button" id="editButton" class="profileNavdBtn appBtn btn" onclick="openTab(event,'Edit', 'editButton')">Edit</button>
     </div>
   </div>
 </div>
   <div class="container">
-    <div class="row">
-      <div class="col">
-        <div class="infoWrap boxShadow">
-          <h2 >Project Description</h2>
-          <div class="descriptionDisplay">
-            <p> {{ project.description }} <a href="#">Edit</a></p>
+    <div id="About" class="tabWrap tabWrapCurrent">
+      <div class="row">
+        <div class="col">
+          <div class="infoWrap boxShadow">
+            <h2 >Project Description</h2>
+            <div class="descriptionDisplay">
+              <p> {{ project.description }} <a href="#">Edit</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-5">
+          <section class="pageInfo">
+          <!-- Page Info Content -->
+            <div class="infoWrap boxShadow">
+              <h2 >Project Info</h2>
+              <div class="infoItem">
+                <i class="icon-calendar"></i>
+                <p>From 05/03/2018 to 07/05/18</p>
+                <a href="#">Edit</a>
+              </div>
+              <div class="infoItem">
+                <i class="icon-calendar"></i>
+                <p>Accepting aplications untill 05/02/18</p>
+                <a href="#">Edit</a>
+              </div>
+              <div class="infoItem">
+                <i class="icon-globe"></i>
+                <p clas="">Mexico | Ciudad del Mexico</p>
+                <a href="#">Edit</a>
+              </div>
+              <button type="button" class="lineBreak projectApplyBtn appBtn btn">Apply Now &raquo</button>
+            </div>
+          </section>
+          <section class="avatarDisplay">
+          <!-- Avatar Display Content -->
+          </section>
+        </div>
+        <div class="col-7">
+        </div>
+      </div>
+    </div>
+    <div id="Projects" class="tabWrap">
+      <div class="row">
+        <div class="col">
+          <div class="infoWrap boxShadow">
+            <div class="contentBar">
+              <h2>Your Projects</h2>
+              <form>
+                <label for="searchProjectsIn" class="form-label"></label>
+                <input class="form-control" type="search" placeholder="Filter" id="searchProjectsIn">
+              </form>
+            </div>
+            <div class="contentBar">
+              <button type="button" class="projectApplyBtn appBtn btn" data-toggle="modal" data-target="#newProjectModal">Create a Project</button>
+            </div>
+            <div class="contentBar">
+              <table class="table-sm table table-hover">
+                <thead class="thead-default">
+                  <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Title</td>
+                    <td>Description</td>
+                    <td><a href="#">Edit</a></td>
+                    <td><a href="#">Details</a></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Title</td>
+                    <td>Description</td>
+                    <td><a href="#">Edit</a></td>
+                    <td><a href="#">Details</a></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Title</td>
+                    <td>Description</td>
+                    <td><a href="#">Edit</a></td>
+                    <td><a href="#">Details</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="infoWrap boxShadow">
+            <div class="contentBar">
+              <h2>Projects your are in</h2>
+              <form>
+                <label for="searchProjectsIn" class="form-label"></label>
+                <input class="form-control" type="search" placeholder="Filter" id="searchProjectsIn">
+              </form>
+            </div>
+            <div class="contentBar">
+              <table class="table-sm table table-hover">
+                <thead class="thead-default">
+                  <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>Title</td>
+                    <td>Description</td>
+                    <td><a href="#">Edit</a></td>
+                    <td><a href="#">Details</a></td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Title</td>
+                    <td>Description</td>
+                    <td><a href="#">Edit</a></td>
+                    <td><a href="#">Details</a></td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Title</td>
+                    <td>Description</td>
+                    <td><a href="#">Edit</a></td>
+                    <td><a href="#">Details</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-5">
-        <section class="pageInfo">
-        <!-- Page Info Content -->
-          <div class="infoWrap boxShadow">
-            <h2 >Project Info</h2>
-            <div class="infoItem">
-              <i class="icon-calendar"></i>
-              <p>From 05/03/2018 to 07/05/18</p>
-              <a href="#">Edit</a>
-            </div>
-            <div class="infoItem">
-              <i class="icon-calendar"></i>
-              <p>Accepting aplications untill 05/02/18</p>
-              <a href="#">Edit</a>
-            </div>
-            <div class="infoItem">
-              <i class="icon-globe"></i>
-              <p clas="">Mexico | Ciudad del Mexico</p>
-              <a href="#">Edit</a>
-            </div>
-            <button type="button" class="lineBreak projectApplyBtn appBtn btn">Apply Now &raquo</button>
-          </div>
-        </section>
-        <section class="avatarDisplay">
-        <!-- Avatar Display Content -->
-        </section>
-      </div>
-      <div class="col-7">
-      </div>
+    <div id="Edit" class="tabWrap">
+      <h2>Edit</h2>
     </div>
   </div>
 </div>
