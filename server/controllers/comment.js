@@ -5,9 +5,6 @@ module.exports = {
 
   // Função que adiciona um comentário a um determinado projeto [STATUS]
   createComment: function(req, res) {
-    console.log('entrou aqui')
-    console.log(req.body.id)
-    console.log(req.body.text)
     Project.findOne({_id:req.body.id}, function(err, project) {
       if(err){
         // Internal Server Error
@@ -31,7 +28,6 @@ module.exports = {
             res.status(500).send(err.errmsg);
             console.log(err)
           } else {
-            console.log(project.id)
             project.comments.push(comment._id)
             project.save(function (err) {
               if (err) {
@@ -121,5 +117,4 @@ module.exports = {
       }
     });
   }
-
 }

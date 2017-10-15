@@ -60,7 +60,7 @@ module.exports = {
         } else {
           // OK
           res.status(200).json(content);
-          console.log(JSON.stringify(content));
+          console.log('Comment ' + req.params.id + ' has been accessed');
         }
       })
     }
@@ -96,7 +96,7 @@ module.exports = {
             }
           });
         }
-      }); 
+      });
     }
   }
 }
