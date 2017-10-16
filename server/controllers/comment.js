@@ -90,7 +90,23 @@ module.exports = {
 
   // Função que entrega os valores das propriedades de um determindo comentário [GET]
   getCommentById: function(req,res){
-    console.log('Entrou no getProjectById')
+    if(req.params && req.params.id) {
+      Comment.findOne({_id:req.params.id}, function(err, comment) {
+        if (err) {
+          // Internal Server Error
+          console.log('505 error. Internal server error');
+          res.status(500).send(err.errmsg);
+        } else if (!comment) {
+          // Not Found
+          console.log('404 error. Comment not found');
+          res.status(404).json({message:'Comment not found'});
+        } else {
+          // OK
+          console.log('A comment has been accessed');
+          res.status(200).json(comment);
+        }
+      })
+    }
   },
 
   // Função que edita os valores das propriedades de um determinado comentário [EDIT]

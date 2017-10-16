@@ -36,8 +36,13 @@ commentControllers.controller('deleteComment', function($http,$scope) {
 });
 
 // Função que busca um comentário específico a partir do seu id [GET]
-commentControllers.controller('editComment', function($http,$scope) {
-  $(".myBtn").click(function(){
-         $("#editModal").modal("toggle");
-     });
+commentControllers.controller('getComment', function($http,$scope) {
+  $scope.getComment = function(commentId){
+    $http.get('http://localhost:8080/api/comments/'+commentId).then(function(comment) {
+      $("#editModal").modal("toggle");
+      $scope.comment = comment.data
+    }, function errorCallback(err) {
+      console.log('Not possible to find this comment')
+    });
+  }
 });

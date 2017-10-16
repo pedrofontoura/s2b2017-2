@@ -9,7 +9,7 @@
 <div class="navBackground">
   <div class="container">
     <div class="profileNav">
-      <button type="button" id="aboutButton" class="profileNavdBtn appBtn btn" onclick="openTab(event,'About', 'aboutButton')">About</button>
+      <button type="button" id="aboutButton" class="profileNavdBtn profileNavdBtnCurrent appBtn btn" onclick="openTab(event,'About', 'aboutButton')">About</button>
       <button type="button" id="projectsButton" class="profileNavdBtn appBtn btn" onclick="openTab(event,'Projects', 'projectsButton')">Projects</button>
       <button type="button" id="editButton" class="profileNavdBtn appBtn btn" onclick="openTab(event,'Edit', 'editButton')">Edit</button>
     </div>
@@ -17,16 +17,6 @@
 </div>
   <div class="container">
     <div id="About" class="tabWrap tabWrapCurrent">
-      <div class="row">
-        <div class="col">
-          <div class="infoWrap boxShadow">
-            <h2 >Project Description</h2>
-            <div class="descriptionDisplay">
-              <p> {{ project.description }} <a href="#">Edit</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="row">
         <div class="col-5">
           <section class="pageInfo">
