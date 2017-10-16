@@ -23,6 +23,7 @@ module.exports = function (router) {
   router.get('/projects/comments/:id', ctrlComment.getProjectComments);
   router.post('/comments', ctrlComment.createComment);
   router.delete('/comments/:id', ctrlComment.deleteCommentById);
+  router.put('/comments/:id', ctrlComment.editCommentById);
 
   // Perfil de usuário
   router.get('/user', auth, ctrlUser.profileRead);
