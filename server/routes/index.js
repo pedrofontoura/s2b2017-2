@@ -1,17 +1,33 @@
+var express = require('express');
+var router = express.Router();
+var jwt = require('express-jwt');
+var auth = jwt({
+  secret: 'SECRET',
+  userProperty: 'payload'
+});
 var ctrlUser = require('../controllers/user');
 var ctrlProject = require('../controllers/project');
 var ctrlComment = require('../controllers/comment');
+var ctrlUser = require('../controllers/user');
+var ctrlAuth = require('../controllers/authentication');
 
-module.exports = function(router){
-  router.post('/user', ctrlUser.newUser);
-  router.get('/projects/comments/:id', ctrlComment.getProjectComments);
+module.exports = function (router) {
+  // Projetos
+  router.get('/projects/:id', ctrlProject.getProjectById);
   router.get('/projects', ctrlProject.getAllProjects);
   router.post('/projects', ctrlProject.createProject);
-  router.get('/projects/:id', ctrlProject.getProjectById);
   router.delete('/projects/:id', ctrlProject.deleteProjectById);
-  router.post('/comments', ctrlComment.createComment);
-  router.put('/comments/:id', ctrlComment.editCommentById);
+
+  // Comentários
   router.get('/comments/:id', ctrlComment.getCommentById);
+  router.get('/projects/comments/:id', ctrlComment.getProjectComments);
+  router.post('/comments', ctrlComment.createComment);
   router.delete('/comments/:id', ctrlComment.deleteCommentById);
+
+  // Perfil de usuário
+  router.get('/user', auth, ctrlUser.profileRead);
+  //router.post('/user', ctrlUser.newUser);
+
+  // Autenticação
   return router;
 }

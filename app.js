@@ -8,6 +8,7 @@ var bodyParser = require('body-parser')
 var router = express.Router();
 var appRoutes = require('./server/routes/index')(router);
 var path = require('path');
+var passport = require('passport');
 
 // Cria as referências para os 'modules' internos da aplicação;
 var init = require('./server/database/init');
@@ -17,6 +18,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/public'))
+require('./server/config/passport');
+app.use(passport.initialize());
 app.use('/api', appRoutes);
 
 // App config

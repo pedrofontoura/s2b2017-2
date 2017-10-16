@@ -1,25 +1,29 @@
+var mongoose = require('mongoose');
 var User = require('../models/user');
 
-//(post)
-module.exports.newUser = function(req,res){
-
-  var user = new User();
-  user.username = req.body.username; // Uses body-parser to parse http body json
-  user.password = req.body.password;
-  user.email = req.body.email;
-  if (req.body.username == null || req.body.username == "" || req.body.password == null || req.body.password == "" || req.body.email == null || req.body.email == "") {
-    res.send({ status : false, message : 'Ensure username, email, and password were provided'});
-  } else {
-    user.save(function (err) {
-      if (err) {
-        if (err.code == 11000){
-          res.send({ status : false, message : 'E-mail or Username already exist'});
-        } else {
-          res.send({ status : false, message : err.errmsg})
-        }
-      } else {
-        res.send({ status : true, message : 'User created'})
-      }
+module.exports.profileRead = function (req, res) {
+  // User ID não existe
+  if (!req.payload._id) {
+    // Unauthorized
+    res.status(401).json({
+      "message": "UnauthorizedError: private profile"
     });
+  } else {
+    User
+      .findById(req.payload._id)
+      .exec(function (err, user) {
+        if (err) {
+          // Internal Server Error
+          res.status(500).json(err);
+        } else if (!user) {
+          // Not Found
+          res.status(404).json({
+            "message": "User not found"
+          });
+        } else {
+          // OK
+          res.status(200).json(user);
+        }
+      });
   }
 };
