@@ -99,46 +99,54 @@
                 <img class="avatarImg" src="assets/raster/profile1.png" alt="?">
               </div>
               <div  ng-controller="newComment" class="commentFormContent">
-                <form name="createCommentForm" id ="createCommentForm" ng-submit="onSubmit()" >
+                <form name="createCommentForm" id ="createCommentForm" ng-submit="onSend()" >
                   <textarea ng-model="comment.text" rows="3" placeholder="Type a comment..." type="text"></textarea>
-                  <button type="submit" class="commentSendBtn appBtn btn">Send<i class="  icon-send"></i></button>
+                  <button type="submit" class="commentSendBtn appBtn btn">Send<i class="icon-send"></i></button>
                 </form>
               </div>
             </div>
+            <div ng-controller="getComment" >
             <div ng-repeat="comment in comments" class="comment">
               <div class="commentAvatarWrap">
                 <img class="avatarImg" src="assets/raster/profile0.png" alt="?">
               </div>
-              <div class="commentContent">
+              <div  class="commentContent">
                 <p><a href="#">John Doe </a>{{comment.text}}</p>
                 <p class="small commentDatetime">
-                  {{comment.createDate}} -
-                  <a ng-controller="editComment" class="myBtn" href="/projects/{{comment._project}}">Edit</a> -
+                  {{comment.postDate}} -
+                  <a ng-click="getComment(comment._id)" class="myBtn" href="/projects/{{comment._project}}">Edit</a> -
                   <a ng-controller="deleteComment" ng-click="deleteComment(comment._id)" href="/projects/{{comment._project}}">Delete</a> -
                   <a ng-controller="deleteComment" ng-click="deleteComment(comment._id)" href="/projects/{{comment._project}}">Reply</a>
                 </p>
               </div>
             </div>
+            <!-- Modal -->
+            <div class="modal fade" id="editModal" role="dialog">
+              <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <div class="comment comentForm">
+                      <div class="commentAvatarWrap">
+                        <img class="avatarImg" src="assets/raster/profile1.png" alt="?">
+                      </div>
+                      <div  ng-controller="editComment" class="commentFormContent">
+                        <form name="editCommentForm" id ="editCommentForm" ng-submit="editComment()" >
+                          <textarea ng-model="comment.text" rows="8" placeholder="Type a comment..." type="text"></textarea>
+                          <button type="submit" class="commentSendBtn appBtn btn">Save<i class="icon-send"></i></button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="cancelBtn appBtn btn" data-dismiss="modal">Dismiss</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           </section>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Modal -->
-<div class="modal fade" id="editModal" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Methods</h4>
-      </div>
-      <div class="modal-body">
-        <p>The toggle method toggles the modal manually.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
