@@ -1,14 +1,13 @@
-// Criação do módulo e injeção de dependências
-var userControllers = angular.module('userControllers', [])
+function profileCtrl($location, meanData) {
+  var vm = this;
 
-// Função que adiciona um novo usuário [POST]
-userControllers.controller('newUser', function($scope, $http){
-  console.log($scope.newUser)
-  $scope.onSubmit = createUser;
-  function createUser(){
-    $http.post('http://localhost:8080/api/user', $scope.newUser).then(function(data) {
-      console.log('Request status: ' + data.data.status);
-      console.log(data.data.message);
+  vm.user = {};
+
+  meanData.getProfile()
+    .success(function (data) {
+      vm.user = data;
+    })
+    .error(function (e) {
+      console.log(e);
     });
-  }
-})
+}

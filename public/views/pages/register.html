@@ -1,18 +1,19 @@
 <div class="container lineBreak">
-  <form ng-submit="onSubmit()">
-  <div class="form-group">
-    <label for="registrationEmail">Email address</label>
-    <input type="email" class="form-control" id="registrationEmail" aria-describedby="emailHelp" placeholder="Enter email" ng-model="newUser.email">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-  </div>
-  <div class="form-group">
-    <label for="registrationUsername">Username</label>
-    <input type="text" class="form-control" id="registrationUsername" aria-describedby="emailHelp" placeholder="Enter an username" ng-model="newUser.username">
-  </div>
-  <div class="form-group">
-    <label for="registrationPassword">Password</label>
-    <input type="password" class="form-control" id="registrationPassword" placeholder="Password" ng-model="newUser.password">
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  <form ng-submit="vm.onSubmit()">
+    <div class="form-group">
+      <label for="registrationEmail">Email address</label>
+      <input type="email" class="form-control" id="registrationEmail" aria-describedby="emailHelp" placeholder="Enter email" ng-model="vm.credentials.email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="registrationUsername">Full name</label>
+      <input type="text" class="form-control" id="registrationName" aria-describedby="emailHelp" placeholder="Enter an username"
+        ng-model="vm.credentials.name">
+    </div>
+    <div class="form-group">
+      <label for="registrationPassword">Password</label>
+      <input type="password" class="form-control" id="registrationPassword" placeholder="Password" ng-model="vm.credentials.password">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
 </div>
