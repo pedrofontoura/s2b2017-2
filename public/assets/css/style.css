@@ -170,6 +170,9 @@ div[class^="appDisplay"] {
 .appDisplayCard {
   align-items: center;
 }
+.appDisplayCard h3 {
+  font-weight: normal;
+}
 .appDisplayTextArea {
   width: 100%;
   height: auto;

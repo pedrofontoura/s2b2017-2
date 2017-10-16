@@ -111,7 +111,36 @@ module.exports = {
 
   // Função que edita os valores das propriedades de um determinado comentário [EDIT]
   editCommentById: function(req, res){
-    console.log('Entrou no editCommentById')
+    if(req.params && req.params.id) {
+      console.log(req.body._id)
+      console.log(req.params.id)
+      if(req.params.id === req.body._id) {
+        Comment.findOne({_id:req.params.id}, function (err, comment) {
+          if(err) {
+            // Internal Server Error
+            console.log(err.errmsg);
+            res.status(500).send(err.errmsg);
+          } else if (!comment) {
+            // Not Found
+            console.log('Comment not found')
+            res.status(404).json({mensagem:'Comment not found'})
+          } else {
+            comment.text = req.body.text;
+            comment.lastDate = Date.now();
+            comment.editFlag = true;
+            comment.save(function(err) {
+              if(err) {
+                console.log(err);
+                res.status(500).send(err.errmsg);
+              } else {
+                console.log('A comment has been edited');
+                res.status(200).json(comment);
+              }
+            });
+          }// Internal Server Error
+        });
+      }
+    }
   },
 
   // Função que entrega todos os comentários vinculados a um determinado projeto [GET]

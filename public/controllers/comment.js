@@ -3,7 +3,7 @@ var commentControllers = angular.module('commentControllers', [])
 
 // Função que solicita adição de um novo comentário [POST]
 commentControllers.controller('newComment',function($scope,$http,$routeParams) {
-  $scope.onSubmit = newComment
+  $scope.onSend = newComment
     function newComment(){
     var newComment = { id : $routeParams.id , text : $scope.comment.text };
     $http.post('http://localhost:8080/api/comments', newComment).then(function(data) {
@@ -42,7 +42,21 @@ commentControllers.controller('getComment', function($http,$scope) {
       $("#editModal").modal("toggle");
       $scope.comment = comment.data
     }, function errorCallback(err) {
-      console.log('Not possible to find this comment')
+      console.log('Comment not found')
     });
+  }
+});
+
+// Função que edita um comentário específico a partir do seu id [PUT]
+commentControllers.controller('editComment', function($http,$scope,$routeParams) {
+  $scope.editComment = function(){
+    console.log($scope.comment)
+    $http.put('http://localhost:8080/api/comments/'+$scope.comment._id, $scope.comment).then(function() {
+      console.log('The comment has been edited')
+      $scope.getProjectComments();
+      }, function errorCallback(err) {
+      console.log('Not possible to edit this comment')
+    });
+    $("#editModal").modal("hide");
   }
 });
