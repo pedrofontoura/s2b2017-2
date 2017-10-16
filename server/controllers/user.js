@@ -2,7 +2,6 @@ var mongoose = require('mongoose');
 var User = require('../models/user');
 
 module.exports.profileRead = function (req, res) {
-  // User ID não existe
   if (!req.payload._id) {
     // Unauthorized
     res.status(401).json({

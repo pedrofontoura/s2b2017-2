@@ -3,7 +3,7 @@ var Comment = require('../models/comment');
 
 module.exports = {
   // Cria um novo projeto na base de dados
-  createProject: function(req,res){
+  createProject: function (req, res) {
     var project = new Project();
     project.title = req.body.title; // Uses body-parser to parse http body json
     project.description = req.body.description;
@@ -28,34 +28,34 @@ module.exports = {
     }
   },
   // Recupera todos os projetos existentes na base de dados
-  getAllProjects: function(req, res){
-      Project.find({}, function (err, content){
-        if(err) {
-          // Internal Server Error
-          res.status(500).send(err.errmsg);
-          console.log(err);
-        } else if(res.lenght==0) {
-          // Not Found
-          res.status(404).json({mensagem:'empty resource'})
-          console.log('Empty search.');
-        } else {
-          // OK
-          res.status(200).json(content)
-          console.log('A content has been sent (getAllProjects)');
-        }
-      })
+  getAllProjects: function (req, res) {
+    Project.find({}, function (err, content) {
+      if (err) {
+        // Internal Server Error
+        res.status(500).send(err.errmsg);
+        console.log(err);
+      } else if (res.lenght == 0) {
+        // Not Found
+        res.status(404).json({ mensagem: 'empty resource' })
+        console.log('Empty search.');
+      } else {
+        // OK
+        res.status(200).json(content)
+        console.log('A content has been sent (getAllProjects)');
+      }
+    })
   },
   // Recupera um projeto específico da base de dados (id)
-  getProjectById: function(req, res){
-    if(req.params && req.params.id) {
-      Project.findOne({_id:req.params.id}, function(err, content) {
+  getProjectById: function (req, res) {
+    if (req.params && req.params.id) {
+      Project.findOne({ _id: req.params.id }, function (err, content) {
         if (err) {
           // Internal Server Error
           res.status(500).send(err.errmsg);
           console.log(err.errmsg);
         } else if (!content) {
           // Not Found
-          res.status(404).json({message:'Project not found'});
+          res.status(404).json({ message: 'Project not found' });
           console.log('Project not found');
         } else {
           // OK
@@ -66,26 +66,26 @@ module.exports = {
     }
   },
   // Remove um comentário específico da base de dados (id)
-  deleteProjectById: function(req, res) {
-    if(req.params && req.params.id) {
-      Project.findOne({_id:req.params.id}, function(err, content) {
-        if(err) {
+  deleteProjectById: function (req, res) {
+    if (req.params && req.params.id) {
+      Project.findOne({ _id: req.params.id }, function (err, content) {
+        if (err) {
           // Internal Server Error
           res.status(500).send(err.errmsg);
           console.log(err.errmsg);
-        } else if(!content) {
+        } else if (!content) {
           // Not Found
-          res.status(404).json({message: 'Project not found'});
+          res.status(404).json({ message: 'Project not found' });
           console.log('Project not found');
         } else {
           // Deletando os comentários do projeto
-          for(var comment of content.comments) {
-            Comment.findOneAndRemove({_id:comment._id}); // sem handlers
+          for (var comment of content.comments) {
+            Comment.findOneAndRemove({ _id: comment._id }); // sem handlers
             console.log('comment deleted')
           }
           // Deletando o projeto
-          Project.findOneAndRemove({_id:req.params.id}, function(err) {
-            if(err) {
+          Project.findOneAndRemove({ _id: req.params.id }, function (err) {
+            if (err) {
               // Internal Server Error
               res.status(500).send(err.errmsg);
               console.log(err.errmsg);
