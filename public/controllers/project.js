@@ -4,17 +4,18 @@ var projectControllers = angular.module('projectControllers', []);
 // Função que adiciona um novo projeto [POST]
 projectControllers.controller('newProject', function($scope, $http){
   $scope.onSubmit = newProject;
+
   function newProject(){
+    console.log($scope.newProject)
     $http.post('http://localhost:8080/api/projects', $scope.newProject).then(function(data) {
-      console.log(data)
+      $scope.getAllProjects();
     });
   }
 })
 
 // Função que busca todos os projetos existentes [GET]
 projectControllers.controller('getAllProjects', function($scope, $http) {
-  getAllProjects();
-  function getAllProjects(){
+  $scope.getAllProjects = function(){
     $http.get('http://localhost:8080/api/projects').then(function(projects){
       $scope.projects = projects.data;
     });
