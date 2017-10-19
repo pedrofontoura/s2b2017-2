@@ -1,12 +1,44 @@
-<div class="container lineBreak">
+<div ng-controller="getAllProjects" ng-init="getAllProjects()" class="container" id="projects">
+  <div id="searchBox">
+    <div class="searchBox">
+      <form>
+        <div class="form-row">
+          <div class="col-md-5">
+            <label for="inputLocation" class="col-form-label">Localização</label>
+            <input id="localSearchTerm" type="text" class="form-control small" placeholder="A localização que você procura" id="inputLocation">
+          </div>
+          <div class="col-md-3">
+            <label for="inputStart" class="smFormGroupInput col-form-label">Área</label>
+            <input type="text" class="form-control" placeholder="Área de trabalho" id="inputStart">
+          </div>
+          <div class="col-md-2">
+            <label for="inputStart" class="col-form-label">Início</label>
+            <input type="text" class="form-control" placeholder="Início" id="inputStart">
+          </div>
+          <div class="col-md-2">
+            <label for="inputEnd" class="col-form-label">Término</label>
+            <input type="text" class="form-control" placeholder="Término" id="inputEnd">
+          </div>
+        </div>
+        <div class="form-row lineBreak">
+          <div class="col-md-10">
+            <input type="text" class="form-control small" placeholder="Buscar..." id="inputLocation">
+          </div>
+          <div class="col-md-2">
+            <button id="searchButton" type="button" class="appBtn-red appBtn-full searchBtn">Buscar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
   <!-- New Project Modal Trigger -->
-  <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#newProjectModal">New Project</button>
+  <button type="button" class="lineBreak btn btn-primary btn-block" data-toggle="modal" data-target="#newProjectModal">Novo Projeto</button>
   <!-- New Project Modal -->
   <div ng-controller="newProject" class="modal fade" id="newProjectModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="modalTitle">New Project</h5>
+          <h5 class="modal-title" id="modalTitle">Novo Projeto</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -16,42 +48,81 @@
             <div class="modal-body">
               <!-- Title -->
               <div class="form-group">
-                 <label for="projectTitleInput">Title</label>
-                <input id="projectTitleInput" ng-model="newProject.title" type="text" class="form-control" placeholder="Project title" required="required">
+                 <label for="projectTitleInput">Nome</label>
+                <input id="projectTitleInput" ng-model="newProject.title" type="text" class="form-control form-control-sm" placeholder="Nome do projeto" required="required">
+              </div>
+              <!-- local -->
+              <div class="form-group">
+                 <label for="projectTitleInput">Localização</label>
+                 <input id="localSearchTermModal" ng-model="newProject.local" type="text" class="form-control form-control-sm" placeholder="Local do projeto" required="required">
+              </div>
+              <!-- Work Area -->
+              <div class="form-group">
+                <label for="projectTitleInput">Area</label>
+                <select ng-model="newProject.workArea" class="form-control form-control-sm">
+                  <option value="" disabled selected>Selecione a área de trabalho do projeto</option>
+                  <option value="cultural">Cultura</option>
+                  <option value="education">Educação</option>
+                  <option value="environment">Meio Ambiente</option>
+                  <option value="helth">Saúde</option>
+                  <option value="social">Social</option>
+                </select>
+              </div>
+              <div class="form-group form-row">
+                <!-- Start Date -->
+                <div class="col">
+                  <label for="inputStart" class="col-form-label">Início</label>
+                  <input  type="text" ng-model="newProject.startDate" class="form-control form-control-sm" placeholder="DD/MM/AA" id="inputStart">
+                </div>
+                <!-- End Date -->
+                <div class="col">
+                  <label for="inputEnd" class="col-form-label">Término</label>
+                  <input  type="text" ng-model="newProject.endDate" class="form-control form-control-sm" placeholder="DD/MM/AA" id="inputEnd">
+                </div>
               </div>
               <!-- Description -->
               <div class="form-group">
-                <label for="projectDescriptionInput">Description</label>
-                <textarea id="projectDescriptionInput" ng-model="newProject .description" class="form-control" rows="5" placeholder="Write a brief description of the project...  " required="required"></textarea>
+                <label for="projectDescriptionInput">Descrição</label>
+                <textarea id="projectDescriptionInput" ng-model="newProject .description" class="form-control form-control-sm" rows="8" placeholder="Escreva uma breve descrição do projeto..." required="required"></textarea>
               </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" data-dismiss="modal" ng-click="onSubmit()" >Post</button>
+            <button type="submit" class="btn btn-primary btn-block" data-dismiss="modal" ng-click="onSubmit()">Publicar</button>
           </div>
         </form> <!-- End Project Form -->
       </div>
     </div>
   </div><!-- End Modal -->
   <!-- Projects Table -->
-  <div class="table-responsive lineBreak">
+  <div class="stable-responsive lineBreak">
     <table class="table-sm table table-hover">
       <thead class="thead-default">
         <tr>
-          <th>#</th>
-          <th>Title</th>
-          <th>Description</th>
-          <th></th>
+          <th class="tbIndex"></th>
+          <th>Nome</th>
+          <th>Local</th>
+          <th class="tbDate">Início</th>
+          <th class="tbDate">Término</th>
+          <th class="tbDate"></th>
         </tr>
       </thead>
       <tbody>
         <tr ng-repeat="project in projects">
-          <td>{{ $index + 1 }}</td>
-          <td>{{ project.title }}</td>
-          <td>{{ project.description }}</td>
-          <td><a href="/projects/{{project._id}}">Details</a></td>
+          <td><i class="icon-book"></i> </td>
+          <td>{{ project.title }} by <a href="/user">User</a></td>
+          <td>{{ project.local }}</td>
+          <td>{{ project.startDate }}</td>
+          <td>{{ project.endDate }}</td>
+          <td><a href="/projects/{{ project._id }}">Detalhes</a></td>
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+<script>
+    function activatePlacesSearch() {
+      var autocomplete = new google.maps.places.Autocomplete(document.getElementById('localSearchTerm'));
+      var autocomplete2 = new google.maps.places.Autocomplete(document.getElementById('localSearchTermModal'));
+    }
+</script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCet60r3F4UsJk4yqJdUaMYclKk9QnKfoI&libraries=places&callback=activatePlacesSearch"></script>
