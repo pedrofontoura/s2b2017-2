@@ -4,21 +4,24 @@ var Comment = require('../models/comment');
 module.exports = {
   // Cria um novo projeto na base de dados
   createProject: function (req, res) {
-    var project = new Project();
-    project.title = req.body.title; // Uses body-parser to parse http body json
-    project.description = req.body.description;
-    // project.places = req.body.places;
-    // project.startDate = req.body.startDate;
-    // project.endDate = req.body.endDate;
-    // project.postDate = ???
-    if (req.body.title == null || req.body.title == "" || req.body.description == null || req.body.description == "") {
+    if (!testDate(req.body.startDate) || !testDate(req.body.endDate)) {
+      res.send('Ensure date format are correct typed');
+    } else if (req.body.title == null || req.body.title == "" || req.body.description == null || req.body.description == "" ||  req.body.workArea == null || req.body.workArea == "" || req.body.local == null || req.body.local == "" ) {
       res.send('Ensure title and description were provided');
     } else {
+      var project = new Project();
+      project.title = req.body.title;
+      project.description = req.body.description;
+      project.local = req.body.local;
+      project.workArea = req.body.workArea;
+      project.postDate = Date.now();
+      project.startDate = strToDate(req.body.startDate);
+      project.endDate = strToDate(req.body.endDate);
       project.save(function (err) {
         if (err) {
           // Internal Server Error
           res.status(500).send(err.errmsg);
-          console.log(err.errmsg);
+          console.log(err);
         } else {
           // Created
           res.status(201).send('The project has been created');
@@ -60,7 +63,9 @@ module.exports = {
         } else {
           // OK
           res.status(200).json(content);
-          console.log('Comment ' + req.params.id + ' has been accessed');
+          dateToStrDate(content.startDate)
+          dateToStrTime(content.startDate)
+
         }
       })
     }
