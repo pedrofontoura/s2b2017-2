@@ -46,17 +46,15 @@ app.listen(port, function() {
   console.log('Running the server on port ' + port);
 });
 
-// Global scope;
-global.testDate = function(str) { // Verifica se uma determinada data é válida.
+// General use functions ;
+testDate = function(str) {
   var t = str.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
   if(t === null)
     return false;
   var d = +t[1], m = +t[2], y = +t[3];
   if(m >= 1 && m <= 12 && d >= 1 && d <= 31) {
-    if (((m==1 || m==3 || m==5 || m==7 || m==8 || m==10 || m==12) && d<=31) || // Se nos meses com 31 dias a data tiver 31 dias ou menos ou
-        ((m==4 || m==6 || m==9 || m==11) && d<=30) || // Se nos meses com 30 dias a data tiver 30 dias ou menos ou,
-        ((m==2 && d<=28)) || // Se no mes de fevereiro a data tiver 28 dias ou menos ou,
-        (m==2 && (y%4 == 0) && d<=29)) { // Se nos anos bicestos a data tiver 29 dias ou menos.
+    // Se nos meses com 31 dias a data tiver 31 dias ou menos OU // Se nos meses com 30 dias a data tiver 30 dias ou menos OU // Se no mes de fevereiro a data tiver 28 dias ou menos OU // Se nos anos bicestos a data tiver 29 dias ou menos.
+    if (((m==1 || m==3 || m==5 || m==7 || m==8 || m==10 || m==12) && d<=31) || ((m==4 || m==6 || m==9 || m==11) && d<=30) || ((m==2 && d<=28)) || (m==2 && (y%4 == 0) && d<=29)) {
       return true;
   } else {
       return false;
@@ -64,9 +62,20 @@ global.testDate = function(str) { // Verifica se uma determinada data é válida
   }
   return false;
 }
-global.strToDate = function(d) {
-  var dateParts = d.split("/");
-  var d = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]); // month is 0-based
-  var d = Date.parse(d);
-  return(d)
-} // Transforma uma deterimnada string de data em data
+strToDate = function(dateString) {
+  var dateParts = dateString.split("/");
+  var dateObject = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]); // month is 0-based
+  dateObject = Date.parse(dateObject);
+  return (dateObject)
+}
+dateToStrDate = function(date) {
+    console.log(date)
+    dformat = ((date.getDate()) + "/" + (date.getMonth()+1) + "/" + (date.getFullYear()))
+    // dformat = [ (date.getMonth()+1).padLeft(), date.getDate().padLeft(), date.getFullYear()].join('/');
+    console.log(dformat)
+};
+dateToStrTime = function(date) {
+    console.log(date)
+    dformat = ((date.getHours()) + ":" + (date.getMinutes()) + ":" + (date.getSeconds()))
+    console.log(dformat)
+};
