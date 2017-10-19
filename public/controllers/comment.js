@@ -21,7 +21,17 @@ commentControllers.controller('getProjectComments', function($scope,$http,$route
   $scope.getProjectComments = function(){
     var id = $routeParams.id;
     $http.get('http://localhost:8080/api/projects/comments/'+id).then(function(comments) {
+      comments.data.sort(function(a,b) {
+        if(a.postDate < b.postDate) {
+          return 1
+        }
+        if (a.postDate >   b.postDate) {
+          return -1
+        }
+        return 0;
+      })
       $scope.comments = comments.data;
+      console.log(comments.data)
     });
   }
 });
