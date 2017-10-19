@@ -11,7 +11,8 @@ appRoutes.config(function($routeProvider,$locationProvider) {
 
   // Página home
   .when('/', {
-    templateUrl: 'views/pages/home.html'
+    templateUrl: 'views/pages/home.html',
+    controller: 'getAllProjects'
   })
 
   // Página register
