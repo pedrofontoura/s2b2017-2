@@ -17,6 +17,16 @@ projectControllers.controller('getAllProjects', function($scope, $http) {
   $scope.getAllProjects = function(){
     $http.get('http://localhost:8080/api/projects').then(function(projects){
       $scope.projects = projects.data;
+      projects.data.forEach(function(element, index, array){
+        var date = projects.data[index].startDate
+        date = new Date(date)
+        projects.data[index].startDate = ((date.getDate()) + "/" + (date.getMonth()+1) + "/" + (date.getFullYear()))
+      });
+      projects.data.forEach(function(element, index, array){
+        var date = projects.data[index].endDate
+        date = new Date(date)
+        projects.data[index].endDate = ((date.getDate()) + "/" + (date.getMonth()+1) + "/" + (date.getFullYear()))
+      });
     });
   }
 })
