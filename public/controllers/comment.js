@@ -30,8 +30,15 @@ commentControllers.controller('getProjectComments', function($scope,$http,$route
         }
         return 0;
       })
+      comments.data.forEach(function(element, index, array){
+        var date = comments.data[index].lastDate
+        date = new Date(date)
+        comments.data[index].lastDate = ((date.getDate()) + "/" + (date.getMonth()+1) + "/" + (date.getFullYear()) + ", às " + (date.getHours()) + ":" + (date.getMinutes()))
+        if (comments.data[index].editFlag) {
+          comments.data[index].lastDate = ("Editado em " + comments.data[index].lastDate)
+        }
+      })
       $scope.comments = comments.data;
-      console.log(comments.data)
     });
   }
 });

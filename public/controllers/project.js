@@ -4,7 +4,6 @@ var projectControllers = angular.module('projectControllers', []);
 // Função que adiciona um novo projeto [POST]
 projectControllers.controller('newProject', function($scope, $http){
   $scope.onSubmit = newProject;
-
   function newProject(){
     console.log($scope.newProject)
     $http.post('http://localhost:8080/api/projects', $scope.newProject).then(function(data) {
