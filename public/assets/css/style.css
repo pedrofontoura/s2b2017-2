@@ -13,19 +13,37 @@ html {
 body {
   overflow-y:scroll;
 }
+html,body {
+  height: 100%;
+}
+header {
+  box-sizing: border-box;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top:0;
+  z-index: 200;
+  background-color: white;
+  box-shadow: 1px 1px 5px #CBCBC9;
+}
+nav {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+}
+nav a {
+  color: var(--Black)
+}
+nav a:hover {
+  color: var(--lightBlack)
+}
 h1, h2, h3 {
   font-weight: lighter;
-}
-table {
-  padding: 0;
-  margin: 0;
-}
-.table {
-  margin: 0;
-  padding: 0;
-}
-.row {
-  margin-top: 20px;
 }
 .btn  {
   border-radius: 0;
@@ -33,6 +51,238 @@ table {
 .btn i {
   margin-left: 10px;
 }
+.navGroup {
+  padding: 0 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.dropdown-item:hover {
+  background-color: lightgray;
+}
+[class^="appBtn"] {
+  box-sizing: border-box;
+  height: auto;
+  height:30px;
+  margin: 0px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+}
+.appBtn-white {
+  background-color: white;
+  color: var(--black)
+}
+.appBtn-black{
+  background-color: var(--black);
+}
+.appBtn-lightBlack{
+  background-color: var(--lightBlack);
+}
+.appBtn-blue{
+  background-color: var(--blue);
+}
+.appBtn-lightBlue{
+  background-color: var(--lightBlue);
+}
+.appBtn-green{
+  background-color: var(--green);
+}
+.appBtn-lightGreen{
+  background-color: var(--lightGreen);
+}
+.appBtn-yellow{
+  background-color: var(--yellow);
+}
+.appBtn-lightYellow{
+  background-color: var(--blue);
+}
+.appBtn-red{
+  background-color: var(--red);
+}
+.appBtn-lightRed{
+  background-color: var(--lightRed);
+}
+.appBtn-full{
+    width: 100%;
+}
+.conteiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.searchBtn {
+  height: 38px;
+}
+.homeHero {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  padding-top: 90px;
+  align-items: center;
+  background-color: lightBlue;
+  background: url(../raster/bg2.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.homeHero h1 {
+    text-shadow: 0 0 1px white;
+    color: white
+}
+.homeHero p {
+  color: white;
+  text-shadow: 0 0 1px white;
+  text-align: center;
+  margin: 0 50px;
+}
+#searchBox {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 50px;
+  top:0px;
+}
+.searchBox {
+  width: 100%;
+  height: auto;
+  padding: 10px 0;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-content: center;
+  z-index: 150;
+  background-color: rgba(255,255,255,1);
+  box-shadow: 1px 1px 5px #CBCBC9;
+}
+.searchBox form {
+  width: 90%;
+  height: auto;
+  margin-top: 5px;
+  padding: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  align-self: center;
+}
+.searchBoxRow {
+  height: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  align-self: center;
+}
+.searchBoxCollapseButton {
+  width: 90%;
+  height: 20px;
+  margin: 20px 0 0 0;
+  border-top: 1px solid lightgray;
+  text-align: center;
+  justify-content: center;
+  font-size: 12px;
+  align-self: center;
+}
+.resetForm {
+  box-sizing: border-box;
+  border: none;
+}
+.resetForm:focus {
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+.form-control:focus {
+  border-color: var(--lightBlue);
+}
+.searchBoxRow + .searchBoxRow {
+  margin-top: 20px;
+}
+.commentSendBtn {
+  width:auto;
+  height:30px;
+  margin: 0;
+  flex-grow:0;
+  font-size: 15px;
+  background-color: var(--red);
+  color: white;
+  align-self: flex-end;
+}
+.commentSendBtn:active {
+  background-color: var(--lightRed);
+}
+.projectApplyBtn {
+  width:100%;
+  height:30px;
+  flex-grow:0;
+  font-size: 15px;
+  background-color: var(--blue);
+  color: white;
+  align-self: flex-end;
+}
+.projectApplyBtn:active {
+    background-color: var(--lightBlue);
+}
+.projectApplyBtn:hover {
+   background-color: var(--darkBlue);
+}
+.iconButton:hover {
+  cursor: pointer;
+}
+.iconButton:active {
+  background-color: var(--lightBlack) ;
+}
+.iconButton i {
+  margin-left: 10px;
+}
+table {
+  padding: 0;
+  margin: 0;
+}
+.form.control {
+  border-radius: 0;
+}
+.ng-view {
+  width: 100%;
+  height: 100%;
+}
+#about {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  padding-top: 50px;
+  align-items: center;
+  background-color: white;
+}
+#projects {
+ margin-top: 70px;
+}
+.tbIndex {
+  width: 10px;
+}
+.tbDate {
+  width: 120px;
+}
+.tbConfig {
+  width: 90px;
+}
+.tbButton {
+  width: 150px;
+  background-color: lightgray;
+}
+.tbButton:hover {
+  background-color: gray;
+}
+
+
+
 .boxShadow {
   box-shadow: 1px 1px 5px #CBCBC9;
 }
@@ -544,4 +794,10 @@ footer {
   background-color: var(--lightBlack);
   color: white;
   align-self: flex-end;
+}
+.pac-container:after{
+    content:none !important;
+}
+.pac-container {
+    z-index: 1051 !important;
 }
