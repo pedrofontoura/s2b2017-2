@@ -29,8 +29,7 @@ module.exports = function (router) {
   router.put('/comments/:id', ctrlComment.editCommentById);
 
   // Perfil de usuário
-  router.get('/user', auth, ctrlUser.profileRead);
-  // router.post('/user', ctrlUser.newUser);
+  router.post('/user', ctrlUser.createUser);
 
   // Autenticação
   return router;
