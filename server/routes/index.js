@@ -13,6 +13,7 @@ var ctrlAuth = require('../controllers/authentication');
 
 module.exports = function (router) {
   // Projetos
+  router.get('/projects/search/', ctrlProject.searchProject)
   router.get('/projects/:id', ctrlProject.getProjectById);
   router.get('/projects', ctrlProject.getAllProjects);
   router.post('/projects', ctrlProject.createProject);
@@ -27,7 +28,7 @@ module.exports = function (router) {
 
   // Perfil de usuário
   router.get('/user', auth, ctrlUser.profileRead);
-  //router.post('/user', ctrlUser.newUser);
+  // router.post('/user', ctrlUser.newUser);
 
   // Autenticação
   return router;

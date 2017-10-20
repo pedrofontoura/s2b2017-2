@@ -40,3 +40,21 @@ projectControllers.controller('getProjectById', function($scope, $http, $routePa
     });
   }
 })
+
+// Função que busca por um projeto baseado nas opções selecionadas pelo usuário [GET]
+projectControllers.controller('searchProject', function($scope, $http) {
+  console.log('entrou aqui1')
+  $scope.onSearch = searchProject;
+  function searchProject(){
+    console.log('entrou aqui2')
+    $http({
+        url: '/api/projects/search/',
+        method: "GET",
+        params: { location:   $scope.searchProject.location  ,
+                  workArea:   $scope.searchProject.workArea  ,
+                  startDate:  $scope.searchProject.startDate ,
+                  endDate:    $scope.searchProject.endDate   ,
+        }
+     })
+   }
+})

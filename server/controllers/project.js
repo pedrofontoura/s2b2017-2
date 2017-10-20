@@ -45,6 +45,9 @@ module.exports = {
         // OK
         res.status(200).json(content)
         console.log('A content has been sent (getAllProjects)');
+        var fruits   = ['teste', 'teste2'];
+        var array = fruits.lenght;
+        console.log(array);
       }
     })
   },
@@ -63,14 +66,11 @@ module.exports = {
         } else {
           // OK
           res.status(200).json(content);
-          dateToStrDate(content.startDate)
-          dateToStrTime(content.startDate)
-
         }
       })
     }
   },
-  // Remove um comentário específico da base de dados (id)
+  // Remove um projeto específico da base de dados (id)
   deleteProjectById: function (req, res) {
     if (req.params && req.params.id) {
       Project.findOne({ _id: req.params.id }, function (err, content) {
@@ -103,5 +103,52 @@ module.exports = {
         }
       });
     }
+  },
+  // Faz uma varredura no banco de dados, filtrando projetos de acordo com as especificações passadas pelo usuário (id)
+  searchProject: function (req, res) {
+    res.status(200).send('OK');
+    console.log(req.query.location)
+    console.log(req.query.workArea)
+    console.log(req.query.startDate)
+    console.log(req.query.endDate)
+    console.log(req.query.searchText)
   }
 }
+
+
+//   var property = req.body.property;
+//   var value = req.body.value;
+//   var op = req.body.op;
+//   var query = {};
+//   if (op!=0 && op!=1 && op!=2 && op!=3 && op!=4 && op!=5) {
+//     res.status(404).json({ message: 'Invalid Operator' });
+//   } else if (op==0) {
+//     query[property] = { $eq : value}; // Matches values that are equal to a specified value.
+//   } else if (op==1) {
+//     query[property] = { $ne : value}; // Matches all values that are not equal to a specified value.
+//   } else if (op==2) {
+//     query[property] = { $lte : value}; // Matches values that are less than or equal to a specified value.
+//   } else if (op==3) {
+//     query[property] = { $gte : value}; // Matches values that are greater than or equal to a specified value.
+//   } else if (op==4) {
+//     query[property] = { $lt : value}; // Matches values that are less than a specified value.
+//   } else if (op==5) {
+//     query[property] = { $gt : value}; // Matches values that are greater than a specified value.
+//   } else {
+//      // sla o que aconteceu
+//   }
+//   Project.find(query, function (err, content) {
+//     if (err) {
+//       // Internal Server Error
+//       res.status(500).send(err.errmsg);
+//       console.log(err.errmsg);
+//     } else if (!content) {
+//       // Not Found
+//       res.status(404).json({ message: 'Project not found' });
+//       console.log('Project not found');
+//     } else {
+//       // OK
+//       res.status(200).json(content);
+//     }
+//   })
+// }

@@ -1,31 +1,31 @@
 <div ng-controller="getAllProjects" ng-init="getAllProjects()" class="container" id="projects">
-  <div id="searchBox">
+  <div ng-controller="searchProject" id="searchBox">
     <div class="searchBox">
-      <form>
+      <form name="searchProject">
         <div class="form-row">
           <div class="col-md-5">
             <label for="inputLocation" class="col-form-label">Localização</label>
-            <input id="localSearchTerm" type="text" class="form-control small" placeholder="A localização que você procura" id="inputLocation">
+            <input ng-model="searchProject.location" id="localSearchTerm" type="text" class="form-control small" placeholder="A localização que você procura" id="inputLocation">
           </div>
           <div class="col-md-3">
             <label for="inputStart" class="smFormGroupInput col-form-label">Área</label>
-            <input type="text" class="form-control" placeholder="Área de trabalho" id="inputStart">
+            <input ng-model="searchProject.workArea" type="text" class="form-control" placeholder="Área de trabalho" id="inputStart">
           </div>
           <div class="col-md-2">
             <label for="inputStart" class="col-form-label">Início</label>
-            <input type="text" class="form-control" placeholder="Início" id="inputStart">
+            <input ng-model="searchProject.startDate"  type="text" class="form-control" placeholder="Início" id="inputStart">
           </div>
           <div class="col-md-2">
             <label for="inputEnd" class="col-form-label">Término</label>
-            <input type="text" class="form-control" placeholder="Término" id="inputEnd">
+            <input ng-model="searchProject.endDate"  type="text" class="form-control" placeholder="Término" id="inputEnd">
           </div>
         </div>
         <div class="form-row lineBreak">
           <div class="col-md-10">
-            <input type="text" class="form-control small" placeholder="Buscar..." id="inputLocation">
+            <input ng-model="searchProject.searchText" type="text" class="form-control small" placeholder="Buscar..." id="inputLocation">
           </div>
           <div class="col-md-2">
-            <button id="searchButton" type="button" class="appBtn-red appBtn-full searchBtn">Buscar</button>
+            <button ng-click="onSearch()" id="searchButton" type="submit" class="appBtn-red appBtn-full searchBtn">Buscar</button>
           </div>
         </div>
       </form>
