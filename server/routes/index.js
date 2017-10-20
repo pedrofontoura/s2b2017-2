@@ -12,12 +12,14 @@ var ctrlUser = require('../controllers/user');
 var ctrlAuth = require('../controllers/authentication');
 
 module.exports = function (router) {
+
   // Projetos
   router.get('/projects/search/', ctrlProject.searchProject)
   router.get('/projects/:id', ctrlProject.getProjectById);
   router.get('/projects', ctrlProject.getAllProjects);
   router.post('/projects', ctrlProject.createProject);
   router.delete('/projects/:id', ctrlProject.deleteProjectById);
+  router.put('/projects/:id', ctrlProject.editProjectById)
 
   // Comentários
   router.get('/comments/:id', ctrlComment.getCommentById);

@@ -1,19 +1,92 @@
 <div ng-init="getProjectById()">
-  <div class="profileHeader">
+  <div class="projectHeaderBackground">
     <div class="container">
-      <h1 class="display-3">{{ project.title }}</h1>
-      <p class="profileInfo"> Created by <a href="#">AIESEC</a></p>
+      <div class="projectHeader">
+        <h1>{{project.title}}</h1>
+        <span ng-controller="editProject" ng-click="editProjectModal()" class="iconDisplaySpan icon-settings settingsGear"> </span>
+        <!-- Edit Project Modal -->
+        <div ng-controller="editProject" class="modal fade" id="editProjectModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">Novo Projeto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <!-- Project Form -->
+              <form  name="newProject" novalidate="novalidate">
+                  <div class="modal-body">
+                    <!-- Title -->
+                    <div class="form-group">
+                       <label for="projectTitleInput">Nome</label>
+                      <input id="projectTitleInput" ng-model="project.title" type="text" class="form-control form-control-sm" placeholder="Nome do projeto" required="required">
+                    </div>
+                    <!-- local -->
+                    <div class="form-group">
+                       <label for="projectTitleInput">Localização</label>
+                       <input id="localSearchTermModal" ng-model="project.local" type="text" class="form-control form-control-sm" placeholder="Local do projeto" required="required">
+                    </div>
+                    <!-- Work Area -->
+                    <div class="form-group">
+                      <label for="projectTitleInput">Area</label>
+                      <select ng-model="project.workArea" class="form-control form-control-sm">
+                        <option value="">Selecione a área de trabalho do projeto</option>
+                        <option value="cultural">Cultura</option>
+                        <option value="education">Educação</option>
+                        <option value="environment">Meio Ambiente</option>
+                        <option value="health">Saúde</option>
+                        <option value="social">Social</option>
+                      </select>
+                    </div>
+                    <div class="form-group form-row">
+                      <!-- Start Date -->
+                      <div class="col">
+                        <label for="inputStart" class="col-form-label">Início</label>
+                        <input  type="text" ng-model="project.startDate" class="form-control form-control-sm" placeholder="DD/MM/AA" id="inputStart">
+                      </div>
+                      <!-- End Date -->
+                      <div class="col">
+                        <label for="inputEnd" class="col-form-label">Término</label>
+                        <input  type="text" ng-model="project.endDate" class="form-control form-control-sm" placeholder="DD/MM/AA" id="inputEnd">
+                      </div>
+                    </div>
+                    <!-- Description -->
+                    <div class="form-group">
+                      <label for="projectDescriptionInput">Descrição</label>
+                      <textarea id="projectDescriptionInput" ng-model="project.description" class="form-control form-control-sm" rows="8" placeholder="Escreva uma breve descrição do projeto..." required="required"></textarea>
+                    </div>
+                    <!-- <button ng-controller="deleteProject" ng-click="deleteProject(project._id)" type="button" class="lineBreak appBtn">Apagar Projeto</button> -->
+                    <a ng-controller="deleteProject" ng-click="deleteProject(project._id)" data-dismiss="modal"  href="http://localhost:8080/projects">Apagar Projeto</a>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary btn-block" data-dismiss="modal" ng-click="editProject()">Salvar</button>
+                </div>
+              </form> <!-- End Project Form -->
+            </div>
+          </div>
+        </div><!-- End Modal -->
+      </div>
     </div>
   </div>
+    <!-- <div class="navBackground">
+      <div class="container">
+        <div class="profileNav">
+          <button type="button" id="aboutButton" class="profileNavdBtn profileNavdBtnCurrent appBtn btn" onclick="openTab(event,'About', 'aboutButton')">About</button>
+          <button type="button" id="projectsButton" class="profileNavdBtn appBtn btn" onclick="openTab(event,'Projects', 'projectsButton')">Projects</button>
+          <button type="button" id="editButton" class="profileNavdBtn appBtn btn" onclick="openTab(event,'Edit', 'editButton')">Edit</button>
+        </div>
+      </div>
+    </div> -->
   <div class="container">
-    <div class="row">
+    <div class="lineBreak row">
       <div class="col">
         <div class="appDisplayCard boxShadow">
           <div class="iconDisplayYellow">
-            <span class="iconDisplaySpan icon-group"></span>
+            <span class="iconDisplaySpan icon-Group"></span>
           </div>
           <div class="textDisplay">
-            <h3 class="textDisplayTitleYellow">PLACES </h3>
+            <h3 class="textDisplayTitleYellow">PARTICIPANTES</h3>
             <p>5/12</p>
           </div>
         </div>
@@ -21,22 +94,22 @@
       <div class="col">
         <div class="appDisplayCard boxShadow">
           <div class="iconDisplayGreen">
-            <span class="iconDisplaySpan icon-globe"></span>
+            <span class="iconDisplaySpan icon-Pin"></span>
           </div>
           <div class="textDisplay">
-            <h3 class="textDisplayTitleGreen">REGION</h3>
-            <p>Latin America</p>
+            <h3 class="textDisplayTitleGreen">LOCAL</h3>
+            <p>{{project.local}}</p>
           </div>
         </div>
       </div>
       <div class="col">
         <div class="appDisplayCard boxShadow">
           <div class="iconDisplayRed">
-            <span class="iconDisplaySpan icon-book"></span>
+            <span class="iconDisplaySpan icon-{{icon}}"></span>
           </div>
           <div class="textDisplay">
-            <h3 class="textDisplayTitleRed">WORK AREA</h3>
-            <p>Education</p>
+            <h3 class="textDisplayTitleRed">ÁREA DE TRABALHO</h3>
+            <p>{{project.workAreaTranslated}}</p>
           </div>
         </div>
       </div>
@@ -46,77 +119,65 @@
             <span class="iconDisplaySpan icon-calendar"></span>
           </div>
           <div class="textDisplay">
-            <h3 class="textDisplayTitlePurple">START DATE</h3>
-            <p>01/02/18</p>
+            <h3 class="textDisplayTitlePurple">INÍCIO</h3>
+              <p>{{ project.startDate }}</p>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col">
+      <div class="col lineBreak">
         <div class="infoWrap boxShadow">
           <h2 >Project Description</h2>
+          <div class="infoItem">
+            <i class="icon-calendar"></i>
+              <p>De {{project.startDate}} a {{project.endDate}}</p>
+          </div>
           <div class="descriptionDisplay">
-            <p> {{ project.description }} <a href="#">Edit</a></p>
+            <p> {{ project.description }} </p>
           </div>
         </div>
       </div>
     </div>
     <div class="row">
-      <div class="col-5">
+      <div class="col-5 lineBreak">
         <section class="pageInfo">
         <!-- Page Info Content -->
           <div class="infoWrap boxShadow">
-            <h2 >Project Info</h2>
-            <div class="infoItem">
-              <i class="icon-calendar"></i>
-              <p>From 05/03/2018 to 07/05/18</p>
-              <a href="#">Edit</a>
-            </div>
-            <div class="infoItem">
-              <i class="icon-calendar"></i>
-              <p>Accepting aplications untill 05/02/18</p>
-              <a href="#">Edit</a>
-            </div>
-            <div class="infoItem">
-              <i class="icon-globe"></i>
-              <p clas="">Mexico | Ciudad del Mexico</p>
-              <a href="#">Edit</a>
-            </div>
-            <button type="button" class="lineBreak projectApplyBtn appBtn btn">Apply Now &raquo</button>
+            <h2 >Participantes</h2>
+            <button type="button" class="lineBreak projectApplyBtn appBtn btn">Participe &raquo</button>
           </div>
         </section>
         <section class="avatarDisplay">
         <!-- Avatar Display Content -->
         </section>
       </div>
-      <div class="col-7">
+      <div class="col-7 lineBreak">
         <section ng-controller="getProjectComments" ng-init="getProjectComments()" class="pageComments">
           <div class="infoWrap boxShadow">
-            <h2>Coments</h2>
+            <h2>Comentários</h2>
             <div class="comment comentForm">
               <div class="commentAvatarWrap">
-                <img class="avatarImg" src="assets/raster/profile1.png" alt="?">
+                <img class="avatarImg" src="assets/raster/profile.png" alt="?">
               </div>
               <div  ng-controller="newComment" class="commentFormContent">
                 <form name="createCommentForm" id ="createCommentForm" ng-submit="onSend()" >
-                  <textarea ng-model="comment.text" rows="3" placeholder="Type a comment..." type="text"></textarea>
-                  <button type="submit" class="commentSendBtn appBtn btn">Send<i class="icon-send"></i></button>
+                  <textarea ng-model="comment.text" rows="3" placeholder="Digite o seu comentário" type="text"></textarea>
+                  <button type="submit" class="commentSendBtn appBtn btn">Enviar<i class="icon-send"></i></button>
                 </form>
               </div>
             </div>
             <div ng-controller="getComment" >
             <div ng-repeat="comment in comments" class="comment">
               <div class="commentAvatarWrap">
-                <img class="avatarImg" src="assets/raster/profile0.png" alt="?">
+                <img class="avatarImg" src="assets/raster/profile.png" alt="?">
               </div>
               <div  class="commentContent">
-                <p><a href="#">John Doe </a>{{comment.text}}</p>
+                <p><a href="/user">John Doe </a>{{comment.text}}</p>
                 <p class="small commentDatetime">
                   {{comment.lastDate}} -
-                  <a ng-click="getComment(comment._id)" class="myBtn" href="/projects/{{comment._project}}">Edit</a> -
-                  <a ng-controller="deleteComment" ng-click="deleteComment(comment._id)" href="/projects/{{comment._project}}">Delete</a> -
-                  <a ng-controller="deleteComment" ng-click="deleteComment(comment._id)" href="/projects/{{comment._project}}">Reply</a>
+                  <a ng-click="getComment(comment._id)" class="myBtn" href="/projects/{{comment._project}}">Editar</a> -
+                  <a ng-controller="deleteComment" ng-click="deleteComment(comment._id)" href="/projects/{{comment._project}}">Deletar</a>
                 </p>
               </div>
             </div>
@@ -128,18 +189,18 @@
                   <div class="modal-body">
                     <div class="comment comentForm">
                       <div class="commentAvatarWrap">
-                        <img class="avatarImg" src="assets/raster/profile1.png" alt="?">
+                        <img class="avatarImg" src="assets/raster/profile.png" alt="?">
                       </div>
                       <div  ng-controller="editComment" class="commentFormContent">
                         <form name="editCommentForm" id ="editCommentForm" ng-submit="editComment()" >
-                          <textarea ng-model="comment.text" rows="8" placeholder="Type a comment..." type="text"></textarea>
+                          <textarea ng-model="comment.text" rows="8" placeholder="Edite o seu comentário..." type="text"></textarea>
                           <button type="submit" class="commentSendBtn appBtn btn">Save<i class="icon-send"></i></button>
                         </form>
                       </div>
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="cancelBtn appBtn btn" data-dismiss="modal">Dismiss</button>
+                    <button type="button" class="cancelBtn appBtn btn" data-dismiss="modal">Cancelar</button>
                   </div>
                 </div>
               </div>

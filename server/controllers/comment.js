@@ -111,7 +111,6 @@ module.exports = {
 
   // Função que edita os valores das propriedades de um determinado comentário [EDIT]
   editCommentById: function(req, res){
-    console.log('entrou aqui')
     if(req.params && req.params.id) {
       console.log(req.body._id)
       console.log(req.params.id)

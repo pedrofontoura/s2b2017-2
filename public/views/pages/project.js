@@ -3,8 +3,10 @@ var projectControllers = angular.module('projectControllers', []);
 
 // Função que adiciona um novo projeto [POST]
 projectControllers.controller('newProject', function($scope, $http){
+  console.log('entrou na view')
   $scope.onSubmit = newProject;
   function newProject(){
+    console.log('entrou na função')
     console.log($scope.newProject)
     $http.post('http://localhost:8080/api/projects', $scope.newProject).then(function(data) {
       $scope.getAllProjects();
@@ -48,16 +50,17 @@ projectControllers.controller('getProjectById', function($scope, $http, $routePa
       date = new Date(date)
       $scope.project.endDate = ((date.getDate()) + "/" + (date.getMonth()+1) + "/" + (date.getFullYear()))
       $scope.icon = $scope.project.workArea
+      console.log($scope.icon)
       if ($scope.project.workArea == 'environment') {
-        $scope.project.workAreaTranslated = "Meio Ambiente"
+        $scope.project.workArea = "Meio Ambiente"
       } else if ($scope.project.workArea == 'education') {
-        $scope.project.workAreaTranslated = "Educação"
+        $scope.project.workArea = "Educação"
       } else if ($scope.project.workArea == 'cultural') {
-        $scope.project.workAreaTranslated = "Cultura"
+        $scope.project.workArea = "Cultura"
       } else if ($scope.project.workArea == 'health') {
-        $scope.project.workAreaTranslated = "Saúde"
+        $scope.project.workArea = "Saúde"
       } else {
-        $scope.project.workAreaTranslated  = "Social"
+        $scope.project.workArea = "Social"
       }
     });
   }
@@ -89,43 +92,5 @@ projectControllers.controller('quickSearch', function($scope, $location) {
     console.log('entrou aqui')
     var text = $scope.quickSearchText
     $location.path( "/projects" );
-  }
-})
-
-// Função que edita um projeto específico baseado em seu ID [PUT]
-projectControllers.controller('editProject', function($http,$scope,$routeParams) {
-  $scope.editProjectModal = function (){
-    $("#editProjectModal").modal("toggle");
-  }
-  $scope.editProject = function(){
-    console.log('entrou na função')
-    console.log($scope.project)
-    $http.put('http://localhost:8080/api/projects/'+$scope.project._id, $scope.project).then(function() {
-      console.log('The comment has been edited')
-      }, function errorCallback(err) {
-      console.log('Not possible to edit this project')
-    });
-    $scope.icon = $scope.project.workArea
-    if ($scope.project.workArea == 'environment') {
-      $scope.project.workAreaTranslated = "Meio Ambiente"
-    } else if ($scope.project.workArea == 'education') {
-      $scope.project.workAreaTranslated = "Educação"
-    } else if ($scope.project.workArea == 'cultural') {
-      $scope.project.workAreaTranslated = "Cultura"
-    } else if ($scope.project.workArea == 'health') {
-      $scope.project.workAreaTranslated = "Saúde"
-    } else {
-      $scope.project.workAreaTranslated  = "Social"
-    }
-    $("#editProjectModal").modal("hide");
-  }
-})
-
-// Função que deleta um projeto específico baseado em seu ID [DELETE]
-projectControllers.controller('deleteProject', function($scope, $http, $location) {
-  $scope.deleteProject = function (id){
-    $http.delete('http://localhost:8080/api/projects/'+id).then(function() {
-     $("#editProjectModal").modal("hide")
-   })
   }
 })

@@ -3,41 +3,33 @@
     <p class="lead">Encontre um projeto de voluntariado e ajude a quem mais precisa</p>
     <div id="searchBox">
       <div class="container">
-        <div class="searchBox">
-          <form>
-            <div class="form-row">
+        <!-- <div class="searchBox">
+          <form name="search"> -->
+            <!-- <div class="form-row">
               <div class="col-md-5">
                 <label for="inputLocation" class="col-form-label">Localização</label>
-                <input type="text" class="form-control small" placeholder="A localização que você procura" id="inputLocation">
+                <input ng-model="search.local" id="localSearchTerm" type="text" class="form-control small" placeholder="A localização que você procura" id="inputLocation">
               </div>
               <div class="col-md-3">
-                <label for="inputStart" class="col-form-label">Área</label>
-                <input type="text" class="form-control" placeholder="Área de trabalho" id="inputStart">
+                <label for="inputStart" class="smFormGroupInput col-form-label">Área</label>
+                <input ng-model="search.workArea" type="text" class="form-control" placeholder="Área de trabalho" id="inputStart">
               </div>
               <div class="col-md-2">
                 <label for="inputStart" class="col-form-label">Início</label>
-                <input type="text" class="form-control" placeholder="Início" id="inputStart">
+                <input ng-model="search.startDate"  type="text" class="form-control" placeholder="Início" id="inputStart">
               </div>
               <div class="col-md-2">
                 <label for="inputEnd" class="col-form-label">Término</label>
-                <input type="text" class="form-control" placeholder="Término" id="inputEnd">
+                <input ng-model="search.endDate"  type="text" class="form-control" placeholder="Término" id="inputEnd">
+              </div>
+            </div> -->
+            <div ng-controller="quickSearch"  class="form-row">
+              <div class="col-md-12">
+                <button ng-click="onSearch() " id="searchButton" type="submit" class="appBtn-red appBtn-full searchBtn">Buscar Projeto</button>
               </div>
             </div>
-            <div class="form-row lineBreak">
-              <div class="col-md-10">
-                <input type="text" class="form-control small" placeholder="Buscar..." id="inputLocation">
-              </div>
-              <div class="col-md-2">
-                <button id="searchButton" type="button" class="appBtn-red appBtn-full searchBtn">Buscar</button>
-              </div>
-            </div>
-          </form>
-        </div>
+          <!-- </form>
+        </div> -->
       </div>
-    </div>
-  </div>
-  <div id="about">
-    <div class="container">
-      <h1 class="display-3">About</h1>
     </div>
   </div>

@@ -1,31 +1,31 @@
 <div ng-controller="getAllProjects" ng-init="getAllProjects()" class="container" id="projects">
-  <div ng-controller="searchProject" id="searchBox">
+  <div id="searchBox">
     <div class="searchBox">
       <form name="searchProject">
-        <div class="form-row">
+        <!-- <div class="form-row">
           <div class="col-md-5">
             <label for="inputLocation" class="col-form-label">Localização</label>
-            <input ng-model="searchProject.location" id="localSearchTerm" type="text" class="form-control small" placeholder="A localização que você procura" id="inputLocation">
+            <input ng-model="search.local" id="localSearchTerm" type="text" class="form-control small" placeholder="A localização que você procura" id="inputLocation">
           </div>
           <div class="col-md-3">
             <label for="inputStart" class="smFormGroupInput col-form-label">Área</label>
-            <input ng-model="searchProject.workArea" type="text" class="form-control" placeholder="Área de trabalho" id="inputStart">
+            <input ng-model="search.workArea" type="text" class="form-control" placeholder="Área de trabalho" id="inputStart">
           </div>
           <div class="col-md-2">
             <label for="inputStart" class="col-form-label">Início</label>
-            <input ng-model="searchProject.startDate"  type="text" class="form-control" placeholder="Início" id="inputStart">
+            <input ng-model="search.startDate"  type="text" class="form-control" placeholder="Início" id="inputStart">
           </div>
           <div class="col-md-2">
             <label for="inputEnd" class="col-form-label">Término</label>
-            <input ng-model="searchProject.endDate"  type="text" class="form-control" placeholder="Término" id="inputEnd">
+            <input ng-model="search.endDate"  type="text" class="form-control" placeholder="Término" id="inputEnd">
           </div>
-        </div>
-        <div class="form-row lineBreak">
-          <div class="col-md-10">
-            <input ng-model="searchProject.searchText" type="text" class="form-control small" placeholder="Buscar..." id="inputLocation">
+        </div> -->
+        <div class="form-row">
+          <div class="col-md-12">
+            <input ng-model="quickSearchText" type="text" class="form-control small" placeholder="Buscar..." id="inputLocation">
           </div>
           <div class="col-md-2">
-            <button ng-click="onSearch()" id="searchButton" type="submit" class="appBtn-red appBtn-full searchBtn">Buscar</button>
+            <!-- <button id="searchButton" type="submit" class="appBtn-red appBtn-full searchBtn">Buscar</button> -->
           </div>
         </div>
       </form>
@@ -64,7 +64,7 @@
                   <option value="cultural">Cultura</option>
                   <option value="education">Educação</option>
                   <option value="environment">Meio Ambiente</option>
-                  <option value="helth">Saúde</option>
+                  <option value="health">Saúde</option>
                   <option value="social">Social</option>
                 </select>
               </div>
@@ -107,9 +107,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="project in projects">
-          <td><i class="icon-book"></i> </td>
-          <td>{{ project.title }} by <a href="/user">User</a></td>
+        <tr ng-repeat="project in projects | filter:quickSearchText">
+          <td><i class="icon-{{project.workArea}}"></i> </td>
+          <td>{{ project.title }} by <a href="/user">John Doe</a></td>
           <td>{{ project.local }}</td>
           <td>{{ project.startDate }}</td>
           <td>{{ project.endDate }}</td>
