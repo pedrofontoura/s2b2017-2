@@ -4,9 +4,6 @@ var Comment = require('../models/comment');
 module.exports = {
   // Cria um novo projeto na base de dados
   createProject: function (req, res) {
-    //
-    // if (!testDate(req.body.startDate) || !testDate(req.body.endDate)) {
-    //   res.send('Ensure date format are correct typed'); }
     if (req.body.title == null || req.body.title == "" || req.body.description == null || req.body.description == "" ||  req.body.workArea == null || req.body.workArea == "" || req.body.local == null || req.body.local == "" ) {
       res.send('Ensure title and description were provided');
     } else {

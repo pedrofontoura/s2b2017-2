@@ -1,15 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var jwt = require('express-jwt');
-var auth = jwt({
-  secret: 'SECRET',
-  userProperty: 'payload'
-});
 var ctrlUser = require('../controllers/user');
 var ctrlProject = require('../controllers/project');
 var ctrlComment = require('../controllers/comment');
-var ctrlUser = require('../controllers/user');
-var ctrlAuth = require('../controllers/authentication');
 
 module.exports = function (router) {
 
@@ -28,9 +19,8 @@ module.exports = function (router) {
   router.delete('/comments/:id', ctrlComment.deleteCommentById);
   router.put('/comments/:id', ctrlComment.editCommentById);
 
-  // Perfil de usuário
+  // Usuários
   router.post('/user', ctrlUser.createUser);
 
-  // Autenticação
   return router;
 }

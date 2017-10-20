@@ -15,12 +15,6 @@ appRoutes.config(function($routeProvider,$locationProvider) {
     controller: 'getAllProjects'
   })
 
-  // Página register
-  .when('/register', {
-    templateUrl: 'views/pages/register.html',
-    controller: 'newUser'
-  })
-
   // Página about
   .when('/about', {
     templateUrl: 'views/pages/about.html'
